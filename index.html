@@ -248,6 +248,36 @@
     }
 
     /* ══════════════════════════════════════════
+       TRANSITION OVERLAY
+    ══════════════════════════════════════════ */
+    #trans-overlay {
+      position: fixed; inset: 0; z-index: 8500;
+      background: #000; opacity: 0; pointer-events: none;
+      overflow: hidden;
+    }
+    #trans-vid {
+      position: absolute; top: -5%; left: -5%;
+      width: 110%; height: 110%;
+      object-fit: cover; display: block; opacity: 0;
+      will-change: transform;
+    }
+    .trans-vignette {
+      position: absolute; inset: 0; pointer-events: none; z-index: 2;
+      background: radial-gradient(ellipse 80% 80% at 50% 50%,
+        transparent 30%, rgba(0,0,0,.65) 90%);
+    }
+    #trans-flash {
+      position: absolute; inset: 0; background: #000;
+      opacity: 0; pointer-events: none; z-index: 3;
+    }
+    /* Ken-Burns drift on transition video */
+    @keyframes transKB {
+      0%   { transform: scale(1.05) translateY(0); }
+      100% { transform: scale(1.0)  translateY(1%); }
+    }
+    #trans-vid.playing { animation: transKB 12s ease-out forwards; }
+
+    /* ══════════════════════════════════════════
        VIDEO HERO
     ══════════════════════════════════════════ */
     #video-hero {
@@ -1145,6 +1175,15 @@
   <a href="#" class="e-skip" id="e-skip">Enter without audio</a>
 </div>
 
+<!-- ── TRANSITION OVERLAY ── -->
+<div id="trans-overlay">
+  <video id="trans-vid" playsinline preload="auto">
+    <source src="assets/transition.mp4" type="video/mp4">
+  </video>
+  <div class="trans-vignette"></div>
+  <div id="trans-flash"></div>
+</div>
+
 <!-- Cinematic letterbox bars -->
 <div id="letterbox-top"></div>
 <div id="letterbox-bot"></div>
@@ -1812,20 +1851,18 @@
       .fromTo('.h-bottom', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: .6 }, '-=.45');
   }
 
-  function doEnter() {
-    if (entered) return;
-    entered = true;
-    gsap.to(entry, { opacity: 0, duration: .85, ease: 'power2.inOut', onComplete: () => { entry.style.display = 'none'; } });
+  /* ── TRANSITION VIDEO ENTER ── */
+  const transOverlay = document.getElementById('trans-overlay');
+  const transVid     = document.getElementById('trans-vid');
+  const transFlash   = document.getElementById('trans-flash');
+  let finishCalled   = false;
+
+  function _activateHero() {
     videoHero.style.opacity = '1';
     document.getElementById('chroma').classList.add('on');
     heroVid.muted = true;
     heroVid.play().catch(() => {});
     gsap.set(hud, { opacity: 1 });
-    // Cinematic letterbox recede
-    setTimeout(() => {
-      document.getElementById('letterbox-top').classList.add('recede');
-      document.getElementById('letterbox-bot').classList.add('recede');
-    }, 850);
     animateHeroIn();
     initScroll();
     initHeroParallax();
@@ -1837,8 +1874,59 @@
     initSceneCards();
   }
 
+  function finishEnter() {
+    if (finishCalled) return;
+    finishCalled = true;
+    // Pre-start hero video underneath
+    _activateHero();
+    // Flash to black then fade overlay out
+    gsap.to(transFlash, { opacity: 1, duration: .18, ease: 'power2.in', onComplete: () => {
+      // Letterbox recede now
+      document.getElementById('letterbox-top').classList.add('recede');
+      document.getElementById('letterbox-bot').classList.add('recede');
+      gsap.to(transOverlay, { opacity: 0, duration: 1.5, ease: 'power2.inOut', delay: .06,
+        onComplete: () => { transOverlay.style.display = 'none'; }
+      });
+    }});
+  }
+
+  function doEnter() {
+    if (entered) return;
+    entered = true;
+    // Fade out entry screen
+    gsap.to(entry, { opacity: 0, duration: .55, ease: 'power2.inOut',
+      onComplete: () => { entry.style.display = 'none'; }
+    });
+    // Bring trans overlay in
+    transOverlay.style.pointerEvents = 'all';
+    gsap.to(transOverlay, { opacity: 1, duration: .45, ease: 'power2.out', onComplete: () => {
+      // Fade video on + start Ken-Burns
+      gsap.to(transVid, { opacity: 1, duration: .5, ease: 'power2.out' });
+      transVid.classList.add('playing');
+      transVid.muted = false;
+      transVid.play().catch(() => { transVid.muted = true; transVid.play().catch(() => {}); });
+    }});
+    // When video ends → cut to hero
+    transVid.addEventListener('ended', finishEnter, { once: true });
+    // Safety: max 12s (video is ~3MB, plays ~5-8s typical)
+    setTimeout(finishEnter, 12000);
+  }
+
+  function doEnterDirect() {
+    if (entered) return;
+    entered = true;
+    gsap.to(entry, { opacity: 0, duration: .85, ease: 'power2.inOut',
+      onComplete: () => { entry.style.display = 'none'; }
+    });
+    _activateHero();
+    setTimeout(() => {
+      document.getElementById('letterbox-top').classList.add('recede');
+      document.getElementById('letterbox-bot').classList.add('recede');
+    }, 850);
+  }
+
   document.getElementById('e-enter').addEventListener('click', doEnter);
-  document.getElementById('e-skip').addEventListener('click', e => { e.preventDefault(); doEnter(); });
+  document.getElementById('e-skip').addEventListener('click', e => { e.preventDefault(); doEnterDirect(); });
 
   /* ══════════════════════════════════════════
      SECTION INDICATOR
