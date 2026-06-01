@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المجموعة · IRTH Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=Noto+Naskh+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --sand: #E9E2D5; --linen: #F0E8DC; --ink: #1A1A1A;
+      --gold: #C9A86A; --madinah: #0E2B22; --warm: #DDD5C4;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--sand); font-family: 'DM Sans', sans-serif; color: var(--ink); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 20px 48px; display: flex; align-items: center; justify-content: space-between;
+      direction: ltr; backdrop-filter: blur(14px); background: rgba(233,226,213,.62);
+      border-bottom: 1px solid rgba(201,168,106,.18);
+    }
+    .n-logo img { height: 32px; }
+    .n-tabs {
+      display: flex; gap: 24px; list-style: none; direction: rtl;
+    }
+    .n-tabs a {
+      font-family: 'Noto Naskh Arabic', serif; font-size: 14px;
+      color: var(--ink); text-decoration: none; opacity: .55;
+      padding-bottom: 4px; border-bottom: 1px solid transparent;
+      transition: opacity .3s, border-color .3s, color .3s;
+    }
+    .n-tabs a:hover, .n-tabs a.active { opacity: 1; color: var(--gold); border-color: var(--gold); }
+    .n-back {
+      font-family: 'DM Sans', sans-serif; font-size: 10px;
+      letter-spacing: .32em; text-transform: uppercase;
+      color: var(--ink); text-decoration: none; opacity: .55;
+    }
+    .n-back:hover { opacity: 1; color: var(--gold); }
+
+    /* HERO */
+    .col-hero {
+      padding: 160px 48px 80px; text-align: center;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .col-eyebrow {
+      font-size: 10px; letter-spacing: .42em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 22px; direction: ltr;
+    }
+    .col-h-ar {
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: clamp(64px, 9vw, 144px); font-weight: 500;
+      color: var(--madinah); line-height: 1; margin-bottom: 14px;
+    }
+    .col-h-en {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(24px, 2.8vw, 36px); font-weight: 300;
+      color: var(--ink); opacity: .55; direction: ltr;
+    }
+
+    /* CATEGORY SECTION */
+    .cat {
+      padding: 100px 48px; position: relative;
+      direction: rtl;
+    }
+    .cat-tamr  { background: linear-gradient(180deg, var(--sand) 0%, #E2D5BD 100%); }
+    .cat-herbs { background: linear-gradient(180deg, #2c3a2a 0%, #1a2a20 100%); color: var(--sand); }
+    .cat-ruh   { background: linear-gradient(180deg, #1A1A1A 0%, #0E2B22 100%); color: var(--sand); }
+
+    .cat-head {
+      max-width: 1400px; margin: 0 auto 60px;
+      display: flex; align-items: flex-end; justify-content: space-between;
+    }
+    .cat-num {
+      font-family: 'DM Sans', sans-serif; font-size: 10px;
+      letter-spacing: .42em; text-transform: uppercase;
+      color: var(--gold); opacity: .82; margin-bottom: 18px; direction: ltr;
+    }
+    .cat-ar {
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: clamp(56px, 7vw, 110px); font-weight: 500;
+      line-height: 0.95; margin-bottom: 10px;
+    }
+    .cat-tamr .cat-ar { color: var(--madinah); }
+    .cat-en {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(22px, 2.6vw, 36px); font-weight: 300;
+      opacity: .55; direction: ltr;
+    }
+    .cat-count {
+      font-family: 'DM Sans', sans-serif; font-size: 11px;
+      letter-spacing: .32em; text-transform: uppercase;
+      opacity: .55; direction: ltr; padding-bottom: 6px;
+    }
+
+    .cat-grid {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .prod {
+      background: rgba(0,0,0,.04); cursor: none;
+      position: relative; overflow: hidden;
+      border: 1px solid rgba(201,168,106,.18);
+      transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+      text-decoration: none; color: inherit;
+    }
+    .cat-herbs .prod, .cat-ruh .prod {
+      background: rgba(255,255,255,.04);
+      border-color: rgba(201,168,106,.24);
+    }
+    .prod:hover { transform: translateY(-8px); }
+    .prod-img {
+      aspect-ratio: 4/5; overflow: hidden;
+    }
+    .prod-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: saturate(.85); transition: filter .5s, transform .9s;
+    }
+    .prod:hover .prod-img img { filter: saturate(1.05); transform: scale(1.04); }
+    .prod-meta { padding: 22px 24px 20px; }
+    .prod-num {
+      font-family: 'DM Sans', sans-serif; font-size: 10px;
+      letter-spacing: .28em; opacity: .42; margin-bottom: 8px; direction: ltr;
+    }
+    .prod-name-ar {
+      font-family: 'Noto Naskh Arabic', serif; font-size: 18px;
+      margin-bottom: 4px;
+    }
+    .prod-name-en {
+      font-family: 'DM Sans', sans-serif; font-size: 10px;
+      letter-spacing: .22em; text-transform: uppercase;
+      opacity: .55; direction: ltr;
+    }
+    .prod-origin {
+      font-size: 11px; color: var(--gold); opacity: .75;
+      margin-top: 8px;
+    }
+
+    footer {
+      padding: 36px 48px; text-align: center;
+      border-top: 1px solid rgba(201,168,106,.18);
+      font-family: 'DM Sans', sans-serif; font-size: 11px;
+      color: var(--ink); opacity: .42; letter-spacing: .22em;
+      background: var(--sand);
+    }
+
+    @media (max-width: 900px) {
+      .cat-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .cat-head { flex-direction: column; align-items: flex-end; gap: 12px; }
+      .n-tabs { display: none; }
+      nav { padding: 16px 24px; }
+    }
+    @media (max-width: 580px) {
+      .cat-grid { grid-template-columns: 1fr; }
+      .col-hero { padding: 130px 24px 60px; }
+      .cat { padding: 70px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="n-logo"><img src="assets/logo.svg" alt="إرث IRTH"></a>
+    <ul class="n-tabs">
+      <li><a href="#tamr" class="active">التمر</a></li>
+      <li><a href="#herbs">أعشاب المدينه</a></li>
+      <li><a href="#ruh">روح المدينه</a></li>
+    </ul>
+    <a href="index.html" class="n-back">← الرئيسية</a>
+  </nav>
+
+  <section class="col-hero">
+    <div class="col-eyebrow">— The Collection · المجموعة</div>
+    <h1 class="col-h-ar">المجموعة</h1>
+    <div class="col-h-en">A heritage, <em>composed slowly</em></div>
+  </section>
+
+  <!-- ── التمر ── -->
+  <section class="cat cat-tamr" id="tamr">
+    <div class="cat-head">
+      <div>
+        <div class="cat-num">— 01 · القسم الأول</div>
+        <h2 class="cat-ar">التمر</h2>
+        <div class="cat-en">From the palms of <em>Madinah</em></div>
+      </div>
+      <div class="cat-count">3 منتجات</div>
+    </div>
+    <div class="cat-grid">
+      <a href="product.html?sku=dates" class="prod">
+        <div class="prod-img"><img src="assets/dates-cream-linen.png" alt="التمور المجلّلة"></div>
+        <div class="prod-meta">
+          <div class="prod-num">— 01</div>
+          <div class="prod-name-ar">التمور المجلّلة</div>
+          <div class="prod-name-en">Premium Dates</div>
+          <div class="prod-origin">المدينة المنورة</div>
+        </div>
+      </a>
+      <a href="product.html?sku=dates" class="prod">
+        <div class="prod-img"><img src="assets/dates-cream-linen.png" alt="عجوة"></div>
+        <div class="prod-meta">
+          <div class="prod-num">— 02</div>
+          <div class="prod-name-ar">عجوة المدينة</div>
+          <div class="prod-name-en">Ajwa Dates</div>
+          <div class="prod-origin">العوالي</div>
+        </div>
+      </a>
+      <a href="product.html?sku=dates" class="prod">
+        <div class="prod-img"><img src="assets/dates-cream-linen.png" alt="سُكّري"></div>
+        <div class="prod-meta">
+          <div class="prod-num">— 03</div>
+          <div class="prod-name-ar">سُكّري نخبة</div>
+          <div class="prod-name-en">Sukkary Select</div>
+          <div class="prod-origin">القصيم</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── أعشاب المدينه ── -->
+  <section class="cat cat-herbs" id="herbs">
+    <div class="cat-head">
+      <div>
+        <div class="cat-num">— 02 · القسم الثاني</div>
+        <h2 class="cat-ar">أعشاب المدينه</h2>
+        <div class="cat-en">Herbs of <em>the holy soil</em></div>
+      </div>
+      <div class="cat-count">3 منتجات</div>
+    </div>
+    <div class="cat-grid">
+      <a href="product.html?sku=mint" class="prod">
+        <div class="prod-img"><img src="assets/madinah-mint.jpg" alt="نعناع"></div>
+        <div class="prod-meta">
+          <div class="prod-num">— 01</div>
+          <div class="prod-name-ar">نعناع المدينة المجفّف</div>
+          <div class="prod-name-en">Madinah Dried Mint</div>
+          <div class="prod-origin">المدينة المنورة</div>
+        </div>
+      </a>
+      <a href="product.html?sku=cinnamon" class="prod">
+        <div class="prod-img"><img src="assets/cinnamon-powder.jpg" alt="قرفة"></div>
+        <div class="prod-meta">
+          <div class="prod-num">— 02</div>
+          <div class="prod-name-ar">القرفة السيلانية</div>
+          <div class="prod-name-en">Ceylon Cinnamon</div>
+          <div class="prod-origin">سريلانكا</div>
+        </div>
+      </a>
+      <a href="product.html?sku=mint" class="prod">
+        <div class="prod-img"><img src="assets/madinah-mint.jpg" alt="إكليل الجبل"></div>
+        <div class="prod-meta">
+          <div class="prod-num">— 03</div>
+          <div class="prod-name-ar">إكليل الجبل البري</div>
+          <div class="prod-name-en">Wild Rosemary</div>
+          <div class="prod-origin">جبال طيبة</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── روح المدينه ── -->
+  <section class="cat cat-ruh" id="ruh">
+    <div class="cat-head">
+      <div>
+        <div class="cat-num">— 03 · القسم الثالث</div>
+        <h2 class="cat-ar">روح المدينه</h2>
+        <div class="cat-en">The <em>essence</em> of Madinah</div>
+      </div>
+      <div class="cat-count">3 منتجات</div>
+    </div>
+    <div class="cat-grid">
+      <a href="product.html?sku=oud" class="prod">
+        <div class="prod-img"><img src="assets/oud-oil.jpg" alt="عود"></div>
+        <div class="prod-meta">
+          <div class="prod-num">— 01</div>
+          <div class="prod-name-ar">زيت العود النقي</div>
+          <div class="prod-name-en">Pure Oud Oil</div>
+          <div class="prod-origin">كمبوديا · الهند</div>
+        </div>
+      </a>
+      <a href="product.html?sku=honey" class="prod">
+        <div class="prod-img"><img src="assets/sidr-honey.jpg" alt="عسل"></div>
+        <div class="prod-meta">
+          <div class="prod-num">— 02</div>
+          <div class="prod-name-ar">عسل السدر الملكي</div>
+          <div class="prod-name-en">Sidr Royal Honey</div>
+          <div class="prod-origin">حضرموت</div>
+        </div>
+      </a>
+      <a href="product.html?sku=olive" class="prod">
+        <div class="prod-img"><img src="assets/olive-oil-premium.jpg" alt="زيت زيتون"></div>
+        <div class="prod-meta">
+          <div class="prod-num">— 03</div>
+          <div class="prod-name-ar">زيت الزيتون الفاخر</div>
+          <div class="prod-name-en">Artisan Olive Oil</div>
+          <div class="prod-origin">فلسطين · المغرب</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer>© ٢٠٢٦ إرث IRTH · جميع الحقوق محفوظة</footer>
+
+  <script>
+    // Active tab on scroll
+    const tabs = document.querySelectorAll('.n-tabs a');
+    const cats = document.querySelectorAll('section.cat');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && e.intersectionRatio > 0.3) {
+          tabs.forEach(t => t.classList.remove('active'));
+          const id = e.target.id;
+          const tab = document.querySelector(`.n-tabs a[href="#${id}"]`);
+          if (tab) tab.classList.add('active');
+        }
+      });
+    }, { threshold: [0.3, 0.6] });
+    cats.forEach(c => obs.observe(c));
+  </script>
+</body>
+</html>
