@@ -254,28 +254,87 @@
       position: fixed; inset: 0; z-index: 8500;
       background: #000; opacity: 0; pointer-events: none;
       overflow: hidden;
+      /* Iris-reveal clip-path — animated via GSAP */
+      clip-path: circle(0% at 50% 44%);
+    }
+
+    /* ── Blurred background clone ── */
+    #trans-bg-vid {
+      position: absolute; inset: -60px;
+      width: calc(100% + 120px); height: calc(100% + 120px);
+      object-fit: cover; display: block;
+      filter: blur(32px) brightness(0.22) saturate(0.5);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── Sharp portrait video wrapper (9:16 centered column) ── */
+    #trans-vid-wrap {
+      position: absolute; top: 0; bottom: 0;
+      left: 50%; transform: translateX(-50%);
+      width: min(calc(56.25vh), 100vw);
+      overflow: hidden; z-index: 2;
     }
     #trans-vid {
-      position: absolute; top: -5%; left: -5%;
-      width: 110%; height: 110%;
-      object-fit: cover; display: block; opacity: 0;
-      will-change: transform;
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      opacity: 0; will-change: transform;
+      transform: scale(1.12);
     }
+    /* Slow zoom-out Ken-Burns */
+    @keyframes transZoomOut {
+      0%   { transform: scale(1.12); }
+      100% { transform: scale(1.0); }
+    }
+    #trans-vid.playing { animation: transZoomOut 14s cubic-bezier(.25,.1,.25,1) forwards; }
+
+    /* Glass separator lines at column edges */
+    #trans-vid-wrap::before,
+    #trans-vid-wrap::after {
+      content: '';
+      position: absolute; top: 0; bottom: 0; width: 1px;
+      z-index: 10; pointer-events: none;
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(255,255,255,.06) 10%,
+        rgba(255,255,255,.18) 35%,
+        rgba(255,255,255,.22) 50%,
+        rgba(255,255,255,.18) 65%,
+        rgba(255,255,255,.06) 90%,
+        transparent 100%
+      );
+    }
+    #trans-vid-wrap::before { left: 0; }
+    #trans-vid-wrap::after  { right: 0; }
+
+    /* ── Side gradient fades (blurred bg → video edge) ── */
+    .trans-edge-l, .trans-edge-r {
+      position: absolute; top: 0; bottom: 0; width: 90px;
+      z-index: 3; pointer-events: none;
+    }
+    .trans-edge-l {
+      left: calc(50% - min(calc(56.25vh), 100vw) / 2);
+      transform: translateX(-100%);
+      background: linear-gradient(to right, rgba(0,0,0,.55) 0%, transparent 100%);
+    }
+    .trans-edge-r {
+      right: calc(50% - min(calc(56.25vh), 100vw) / 2);
+      transform: translateX(100%);
+      background: linear-gradient(to left, rgba(0,0,0,.55) 0%, transparent 100%);
+    }
+
+    /* Vignette over everything */
     .trans-vignette {
-      position: absolute; inset: 0; pointer-events: none; z-index: 2;
-      background: radial-gradient(ellipse 80% 80% at 50% 50%,
-        transparent 30%, rgba(0,0,0,.65) 90%);
+      position: absolute; inset: 0; pointer-events: none; z-index: 4;
+      background: radial-gradient(ellipse 70% 70% at 50% 50%,
+        transparent 30%, rgba(0,0,0,.5) 100%);
     }
+
+    /* Flash layer */
     #trans-flash {
-      position: absolute; inset: 0; background: #000;
-      opacity: 0; pointer-events: none; z-index: 3;
+      position: absolute; inset: 0; background: #fff;
+      opacity: 0; pointer-events: none; z-index: 6;
     }
-    /* Ken-Burns drift on transition video */
-    @keyframes transKB {
-      0%   { transform: scale(1.05) translateY(0); }
-      100% { transform: scale(1.0)  translateY(1%); }
-    }
-    #trans-vid.playing { animation: transKB 12s ease-out forwards; }
 
     /* ══════════════════════════════════════════
        VIDEO HERO
@@ -1177,10 +1236,22 @@
 
 <!-- ── TRANSITION OVERLAY ── -->
 <div id="trans-overlay">
-  <video id="trans-vid" playsinline preload="auto">
+  <!-- Blurred backdrop clone (muted, loops) -->
+  <video id="trans-bg-vid" playsinline muted loop aria-hidden="true" tabindex="-1">
     <source src="assets/transition.mp4" type="video/mp4">
   </video>
+  <!-- Sharp portrait column (9:16) -->
+  <div id="trans-vid-wrap">
+    <video id="trans-vid" playsinline preload="auto">
+      <source src="assets/transition.mp4" type="video/mp4">
+    </video>
+  </div>
+  <!-- Side gradient fades -->
+  <div class="trans-edge-l"></div>
+  <div class="trans-edge-r"></div>
+  <!-- Overall vignette -->
   <div class="trans-vignette"></div>
+  <!-- Flash/cut layer -->
   <div id="trans-flash"></div>
 </div>
 
@@ -1854,8 +1925,12 @@
   /* ── TRANSITION VIDEO ENTER ── */
   const transOverlay = document.getElementById('trans-overlay');
   const transVid     = document.getElementById('trans-vid');
+  const transBgVid   = document.getElementById('trans-bg-vid');
   const transFlash   = document.getElementById('trans-flash');
   let finishCalled   = false;
+
+  // Pre-set iris closed (hidden until doEnter)
+  gsap.set(transOverlay, { clipPath: 'circle(0% at 50% 44%)', opacity: 1 });
 
   function _activateHero() {
     videoHero.style.opacity = '1';
@@ -1877,14 +1952,18 @@
   function finishEnter() {
     if (finishCalled) return;
     finishCalled = true;
-    // Pre-start hero video underneath
+    if (transBgVid) transBgVid.pause();
     _activateHero();
-    // Flash to black then fade overlay out
-    gsap.to(transFlash, { opacity: 1, duration: .18, ease: 'power2.in', onComplete: () => {
-      // Letterbox recede now
+    // White flash → iris collapse → hero revealed
+    gsap.to(transFlash, { opacity: 1, duration: .14, ease: 'power2.in', onComplete: () => {
       document.getElementById('letterbox-top').classList.add('recede');
       document.getElementById('letterbox-bot').classList.add('recede');
-      gsap.to(transOverlay, { opacity: 0, duration: 1.5, ease: 'power2.inOut', delay: .06,
+      gsap.to(transOverlay, {
+        clipPath: 'circle(0% at 50% 44%)',
+        opacity: 0,
+        duration: 1.3,
+        ease: 'power2.inOut',
+        delay: .04,
         onComplete: () => { transOverlay.style.display = 'none'; }
       });
     }});
@@ -1893,23 +1972,30 @@
   function doEnter() {
     if (entered) return;
     entered = true;
-    // Fade out entry screen
-    gsap.to(entry, { opacity: 0, duration: .55, ease: 'power2.inOut',
+    // Entry: scale-lift + fade out
+    gsap.to(entry, {
+      opacity: 0, scale: 1.05, duration: .6, ease: 'power2.inOut',
       onComplete: () => { entry.style.display = 'none'; }
     });
-    // Bring trans overlay in
+    // Iris expand from center
     transOverlay.style.pointerEvents = 'all';
-    gsap.to(transOverlay, { opacity: 1, duration: .45, ease: 'power2.out', onComplete: () => {
-      // Fade video on + start Ken-Burns
-      gsap.to(transVid, { opacity: 1, duration: .5, ease: 'power2.out' });
-      transVid.classList.add('playing');
-      transVid.muted = false;
-      transVid.play().catch(() => { transVid.muted = true; transVid.play().catch(() => {}); });
-    }});
-    // When video ends → cut to hero
+    gsap.to(transOverlay, {
+      clipPath: 'circle(150% at 50% 44%)',
+      duration: .88, ease: 'power2.inOut',
+      onComplete: () => {
+        gsap.to(transVid, { opacity: 1, duration: .4, ease: 'power2.out' });
+        transVid.classList.add('playing');
+        if (transBgVid) transBgVid.play().catch(() => {});
+        transVid.muted = false;
+        transVid.play().catch(() => {
+          transVid.muted = true;
+          transVid.play().catch(() => {});
+        });
+      }
+    });
     transVid.addEventListener('ended', finishEnter, { once: true });
-    // Safety: max 12s (video is ~3MB, plays ~5-8s typical)
-    setTimeout(finishEnter, 12000);
+    // Safety: ~4MB video plays ~8-10s
+    setTimeout(finishEnter, 14000);
   }
 
   function doEnterDirect() {
