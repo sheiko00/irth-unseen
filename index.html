@@ -248,92 +248,95 @@
     }
 
     /* ══════════════════════════════════════════
-       TRANSITION OVERLAY
+       TRANSITION OVERLAY  — fullscreen cinematic
     ══════════════════════════════════════════ */
     #trans-overlay {
       position: fixed; inset: 0; z-index: 8500;
       background: #000; opacity: 0; pointer-events: none;
       overflow: hidden;
-      /* Iris-reveal clip-path — animated via GSAP */
       clip-path: circle(0% at 50% 44%);
     }
 
-    /* ── Blurred background clone ── */
-    #trans-bg-vid {
-      position: absolute; inset: -60px;
-      width: calc(100% + 120px); height: calc(100% + 120px);
-      object-fit: cover; display: block;
-      filter: blur(32px) brightness(0.22) saturate(0.5);
-      pointer-events: none; z-index: 0;
-    }
-
-    /* ── Sharp portrait video wrapper (9:16 centered column) ── */
-    #trans-vid-wrap {
-      position: absolute; top: 0; bottom: 0;
-      left: 50%; transform: translateX(-50%);
-      width: min(calc(56.25vh), 100vw);
-      overflow: hidden; z-index: 2;
-    }
+    /* Fullscreen landscape video */
     #trans-vid {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
       object-fit: cover; display: block;
       opacity: 0; will-change: transform;
-      transform: scale(1.12);
+      transform: scale(1.08);
+      transform-origin: center center;
     }
-    /* Slow zoom-out Ken-Burns */
     @keyframes transZoomOut {
-      0%   { transform: scale(1.12); }
+      0%   { transform: scale(1.08); }
       100% { transform: scale(1.0); }
     }
-    #trans-vid.playing { animation: transZoomOut 14s cubic-bezier(.25,.1,.25,1) forwards; }
+    #trans-vid.playing { animation: transZoomOut 14s cubic-bezier(.2,.05,.25,1) forwards; }
 
-    /* Glass separator lines at column edges */
-    #trans-vid-wrap::before,
-    #trans-vid-wrap::after {
-      content: '';
-      position: absolute; top: 0; bottom: 0; width: 1px;
+    /* Gold-tinted cinematic grade */
+    .film-grade {
+      position: absolute; inset: 0; z-index: 2; pointer-events: none;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,.42) 0%, transparent 28%, transparent 68%, rgba(0,0,0,.55) 100%),
+        radial-gradient(ellipse 100% 80% at 50% 50%, transparent 40%, rgba(8,18,14,.38) 100%);
+      mix-blend-mode: multiply;
+    }
+    /* Warm gold overlay */
+    .film-lut {
+      position: absolute; inset: 0; z-index: 3; pointer-events: none;
+      background: linear-gradient(135deg, rgba(201,168,106,.08) 0%, transparent 50%, rgba(14,43,34,.12) 100%);
+      mix-blend-mode: screen;
+    }
+
+    /* Cinematic letterbox bars — 2.39:1 crop (~12.5vh each) */
+    .film-lb-top, .film-lb-bot {
+      position: absolute; left: 0; right: 0;
+      height: 12.5vh; background: #000;
       z-index: 10; pointer-events: none;
-      background: linear-gradient(to bottom,
-        transparent 0%,
-        rgba(255,255,255,.06) 10%,
-        rgba(255,255,255,.18) 35%,
-        rgba(255,255,255,.22) 50%,
-        rgba(255,255,255,.18) 65%,
-        rgba(255,255,255,.06) 90%,
-        transparent 100%
-      );
     }
-    #trans-vid-wrap::before { left: 0; }
-    #trans-vid-wrap::after  { right: 0; }
+    .film-lb-top { top: 0; transform: translateY(-100%); }
+    .film-lb-bot { bottom: 0; transform: translateY(100%); }
 
-    /* ── Side gradient fades (blurred bg → video edge) ── */
-    .trans-edge-l, .trans-edge-r {
-      position: absolute; top: 0; bottom: 0; width: 90px;
-      z-index: 3; pointer-events: none;
+    /* Film title overlay */
+    #film-title {
+      position: absolute; bottom: 18vh; left: 0; right: 0;
+      z-index: 15; text-align: center; pointer-events: none;
+      opacity: 0;
     }
-    .trans-edge-l {
-      left: calc(50% - min(calc(56.25vh), 100vw) / 2);
-      transform: translateX(-100%);
-      background: linear-gradient(to right, rgba(0,0,0,.55) 0%, transparent 100%);
+    .film-title-ar {
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: clamp(52px, 8vw, 108px); font-weight: 400;
+      color: rgba(233,226,213,.94);
+      letter-spacing: .04em;
+      text-shadow: 0 2px 32px rgba(0,0,0,.6), 0 0 80px rgba(201,168,106,.18);
+      line-height: 1;
     }
-    .trans-edge-r {
-      right: calc(50% - min(calc(56.25vh), 100vw) / 2);
-      transform: translateX(100%);
-      background: linear-gradient(to left, rgba(0,0,0,.55) 0%, transparent 100%);
+    .film-title-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(13px, 1.6vw, 18px);
+      color: rgba(201,168,106,.72);
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      margin-top: 14px;
+      text-shadow: 0 1px 12px rgba(0,0,0,.5);
     }
-
-    /* Vignette over everything */
-    .trans-vignette {
-      position: absolute; inset: 0; pointer-events: none; z-index: 4;
-      background: radial-gradient(ellipse 70% 70% at 50% 50%,
-        transparent 30%, rgba(0,0,0,.5) 100%);
+    .film-title-line {
+      width: 48px; height: 1px;
+      background: rgba(201,168,106,.45);
+      margin: 12px auto 0;
     }
-
+    .film-tagline {
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: clamp(12px, 1.2vw, 15px);
+      color: rgba(233,226,213,.42);
+      letter-spacing: .22em;
+      margin-top: 10px;
+      direction: rtl;
+    }
     /* Flash layer */
     #trans-flash {
       position: absolute; inset: 0; background: #fff;
-      opacity: 0; pointer-events: none; z-index: 6;
+      opacity: 0; pointer-events: none; z-index: 20;
     }
 
     /* ══════════════════════════════════════════
@@ -1234,24 +1237,26 @@
   <a href="#" class="e-skip" id="e-skip">Enter without audio</a>
 </div>
 
-<!-- ── TRANSITION OVERLAY ── -->
+<!-- ── TRANSITION OVERLAY — fullscreen cinematic ── -->
 <div id="trans-overlay">
-  <!-- Blurred backdrop clone (muted, loops) -->
-  <video id="trans-bg-vid" playsinline muted loop aria-hidden="true" tabindex="-1">
+  <!-- Fullscreen landscape video -->
+  <video id="trans-vid" playsinline preload="auto" aria-hidden="true">
     <source src="assets/transition.mp4" type="video/mp4">
   </video>
-  <!-- Sharp portrait column (9:16) -->
-  <div id="trans-vid-wrap">
-    <video id="trans-vid" playsinline preload="auto">
-      <source src="assets/transition.mp4" type="video/mp4">
-    </video>
+  <!-- Color grade layers -->
+  <div class="film-grade"></div>
+  <div class="film-lut"></div>
+  <!-- Cinematic letterbox bars (2.39:1) -->
+  <div class="film-lb-top"></div>
+  <div class="film-lb-bot"></div>
+  <!-- Arabic title reveal -->
+  <div id="film-title">
+    <div class="film-title-ar">إرث</div>
+    <div class="film-title-line"></div>
+    <div class="film-title-sub">IRTH · Heritage of the Pure</div>
+    <div class="film-tagline">من قلب المدينة · تراث الطيبات</div>
   </div>
-  <!-- Side gradient fades -->
-  <div class="trans-edge-l"></div>
-  <div class="trans-edge-r"></div>
-  <!-- Overall vignette -->
-  <div class="trans-vignette"></div>
-  <!-- Flash/cut layer -->
+  <!-- White flash/cut -->
   <div id="trans-flash"></div>
 </div>
 
@@ -1922,14 +1927,16 @@
       .fromTo('.h-bottom', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: .6 }, '-=.45');
   }
 
-  /* ── TRANSITION VIDEO ENTER ── */
+  /* ── TRANSITION VIDEO ENTER — fullscreen cinematic ── */
   const transOverlay = document.getElementById('trans-overlay');
   const transVid     = document.getElementById('trans-vid');
-  const transBgVid   = document.getElementById('trans-bg-vid');
   const transFlash   = document.getElementById('trans-flash');
+  const filmTitle    = document.getElementById('film-title');
+  const filmLbTop    = document.querySelector('.film-lb-top');
+  const filmLbBot    = document.querySelector('.film-lb-bot');
   let finishCalled   = false;
 
-  // Pre-set iris closed (hidden until doEnter)
+  // Pre-set iris closed
   gsap.set(transOverlay, { clipPath: 'circle(0% at 50% 44%)', opacity: 1 });
 
   function _activateHero() {
@@ -1952,49 +1959,66 @@
   function finishEnter() {
     if (finishCalled) return;
     finishCalled = true;
-    if (transBgVid) transBgVid.pause();
+    transVid.pause();
     _activateHero();
-    // White flash → iris collapse → hero revealed
-    gsap.to(transFlash, { opacity: 1, duration: .14, ease: 'power2.in', onComplete: () => {
-      document.getElementById('letterbox-top').classList.add('recede');
-      document.getElementById('letterbox-bot').classList.add('recede');
-      gsap.to(transOverlay, {
-        clipPath: 'circle(0% at 50% 44%)',
-        opacity: 0,
-        duration: 1.3,
-        ease: 'power2.inOut',
-        delay: .04,
-        onComplete: () => { transOverlay.style.display = 'none'; }
-      });
-    }});
+    // Letterbox bars open outward
+    gsap.to(filmLbTop, { yPercent: -100, duration: 1.1, ease: 'power3.inOut' });
+    gsap.to(filmLbBot, { yPercent: 100, duration: 1.1, ease: 'power3.inOut' });
+    // Title fade if still visible
+    gsap.to(filmTitle, { opacity: 0, duration: .5, ease: 'power2.in' });
+    // Flash → iris collapse → hero
+    setTimeout(() => {
+      gsap.to(transFlash, { opacity: 1, duration: .18, ease: 'power2.in', onComplete: () => {
+        document.getElementById('letterbox-top').classList.add('recede');
+        document.getElementById('letterbox-bot').classList.add('recede');
+        gsap.to(transOverlay, {
+          clipPath: 'circle(0% at 50% 44%)',
+          opacity: 0,
+          duration: 1.4,
+          ease: 'power2.inOut',
+          delay: .05,
+          onComplete: () => { transOverlay.style.display = 'none'; }
+        });
+      }});
+    }, 900);
   }
 
   function doEnter() {
     if (entered) return;
     entered = true;
-    // Entry: scale-lift + fade out
+    // Entry screen fade + lift
     gsap.to(entry, {
       opacity: 0, scale: 1.05, duration: .6, ease: 'power2.inOut',
       onComplete: () => { entry.style.display = 'none'; }
     });
-    // Iris expand from center
+    // Iris expand
     transOverlay.style.pointerEvents = 'all';
     gsap.to(transOverlay, {
       clipPath: 'circle(150% at 50% 44%)',
-      duration: .88, ease: 'power2.inOut',
+      duration: .9, ease: 'power2.inOut',
       onComplete: () => {
-        gsap.to(transVid, { opacity: 1, duration: .4, ease: 'power2.out' });
+        // Video fade in
+        gsap.to(transVid, { opacity: 1, duration: .55, ease: 'power2.out' });
         transVid.classList.add('playing');
-        if (transBgVid) transBgVid.play().catch(() => {});
         transVid.muted = false;
         transVid.play().catch(() => {
           transVid.muted = true;
           transVid.play().catch(() => {});
         });
+        // Letterbox bars slide IN — cinematic crop
+        gsap.to(filmLbTop, { yPercent: 0, duration: .75, ease: 'power3.out', delay: .1 });
+        gsap.to(filmLbBot, { yPercent: 0, duration: .75, ease: 'power3.out', delay: .1 });
+        // Title emerge at 2.2s
+        gsap.fromTo(filmTitle,
+          { opacity: 0, y: 28 },
+          { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out', delay: 2.2 }
+        );
+        // Title hold then fade at 7s
+        gsap.to(filmTitle, { opacity: 0, y: -18, duration: .9, ease: 'power2.in', delay: 7.0 });
       }
     });
     transVid.addEventListener('ended', finishEnter, { once: true });
-    // Safety: ~4MB video plays ~8-10s
+    // Safety fallback (14s)
     setTimeout(finishEnter, 14000);
   }
 
