@@ -1,0 +1,17 @@
+{
+  "name": "إرث IRTH",
+  "short_name": "إرث",
+  "description": "تمور المدينة الفاخرة — Luxury Dates from Madinah",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0E2B22",
+  "theme_color": "#0E2B22",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    { "src": "assets/favicon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "assets/favicon-32.png",  "sizes": "32x32",  "type": "image/png" },
+    { "src": "assets/favicon.svg",     "sizes": "any",     "type": "image/svg+xml", "purpose": "maskable any" }
+  ],
+  "categories": ["food", "shopping", "business"]
+}

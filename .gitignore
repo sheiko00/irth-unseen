@@ -1,3 +1,9 @@
 node_modules/
 .DS_Store
 *.log
+Thumbs.db
+
+# Original uncompressed source videos (compressed versions committed)
+assets/hero.mp4
+assets/transition.mp4
+assets/ambient.mp3

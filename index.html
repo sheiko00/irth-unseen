@@ -3,9 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>إرث IRTH — تراث الطيبات</title>
+  <title>إرث IRTH — تمور المدينة الفاخرة · Luxury Dates from Madinah</title>
+  <meta name="description" content="إرث — تمور عجوة ومجول من قلب المدينة المنورة. منتجات غذائية فاخرة للهدايا والجملة. نشحن للخليج ومصر وأوروبا وأفريقيا. IRTH: premium Ajwa & Medjool dates, corporate gifts, B2B wholesale.">
+  <meta name="keywords" content="تمور المدينة المنورة، عجوة المدينة، تمور فاخرة، تمور مجول، هدايا تمور، زيت زيتون فاخر، تمور للشركات، Ajwa dates Madinah, luxury dates Saudi Arabia, premium dates wholesale, corporate date gifts, Medjool dates, irthmadina">
+  <meta name="author" content="IRTH إرث">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://irthmadina.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="إرث IRTH">
+  <meta property="og:title" content="إرث IRTH — تمور المدينة الفاخرة · Luxury Dates from Madinah">
+  <meta property="og:description" content="تمور عجوة ومجول من قلب المدينة المنورة. هدايا فاخرة للمناسبات والشركات. نشحن للخليج ومصر وأوروبا. Premium Ajwa dates, B2B wholesale, corporate gifts.">
+  <meta property="og:url" content="https://irthmadina.com/">
+  <meta property="og:image" content="https://irthmadina.com/assets/og-home.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="إرث IRTH — تمور فاخرة من المدينة المنورة">
+  <meta property="og:locale" content="ar_SA">
+  <meta property="og:locale:alternate" content="en_GB">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="إرث IRTH — Luxury Dates from Madinah">
+  <meta name="twitter:description" content="Premium Ajwa & Medjool dates. Corporate gifts. B2B wholesale. Gulf · Egypt · Europe · Africa.">
+  <meta name="twitter:image" content="https://irthmadina.com/assets/og-home.jpg">
+  <meta name="twitter:image:alt" content="IRTH — Luxury Dates from Madinah">
+
+  <!-- Geo (Madinah al-Munawwarah) -->
+  <meta name="geo.region" content="SA-MD">
+  <meta name="geo.placename" content="Al Madinah Al Munawwarah, Saudi Arabia">
+  <meta name="geo.position" content="24.5247;39.5692">
+  <meta name="ICBM" content="24.5247, 39.5692">
+
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="ar" href="https://irthmadina.com/">
+  <link rel="alternate" hreflang="ar-SA" href="https://irthmadina.com/">
+  <link rel="alternate" hreflang="x-default" href="https://irthmadina.com/">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
+  <meta name="theme-color" content="#0E2B22">
+  <link rel="manifest" href="site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Intro video — preload desktop/mobile after compression, raw fallback until then -->
+  <link rel="preload" as="video" href="assets/intro-mobile.mp4"  media="(max-width: 768px)"  type="video/mp4">
+  <link rel="preload" as="video" href="assets/intro-desktop.mp4" media="(min-width: 769px)" type="video/mp4">
+  <!-- Phase 04: after compression, swap hero preload to compressed files:
+       <link rel="preload" as="video" href="assets/hero-mobile.mp4"  media="(max-width: 768px)">
+       <link rel="preload" as="video" href="assets/hero-desktop.mp4" media="(min-width: 769px)"> -->
   <link rel="preload" as="video" href="assets/hero.mp4" type="video/mp4">
   <link rel="preload" as="image" href="assets/logo.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=Noto+Naskh+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
@@ -23,7 +73,7 @@
     :root {
       --sand:    #E9E2D5;
       --linen:   #F0E8DC;
-      --ink:     #1A1A1A;
+      --ink:     #101010;
       --gold:    #C9A86A;
       --madinah: #0E2B22;
       --warm:    #DDD5C4;
@@ -40,6 +90,7 @@
     /* ══════════════════════════════════════════
        UTILITIES
     ══════════════════════════════════════════ */
+    a, a:visited { color: inherit; text-decoration: none; }
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
     .overflow-h { overflow: hidden; display: block; }
 
@@ -270,7 +321,7 @@
       0%   { transform: scale(1.08); }
       100% { transform: scale(1.0); }
     }
-    #trans-vid.playing { animation: transZoomOut 14s cubic-bezier(.2,.05,.25,1) forwards; }
+    #trans-vid.playing { animation: transZoomOut 3s cubic-bezier(.2,.05,.25,1) forwards; }
 
     /* Gold-tinted cinematic grade */
     .film-grade {
@@ -333,10 +384,12 @@
       margin-top: 10px;
       direction: rtl;
     }
-    /* Flash layer */
+    /* Cinematic fade layer — dark dissolve (replaces old white flash) */
     #trans-flash {
-      position: absolute; inset: 0; background: #fff;
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0a1a14 0%, #060d09 100%);
       opacity: 0; pointer-events: none; z-index: 20;
+      transition: opacity .05s;
     }
 
     /* ══════════════════════════════════════════
@@ -347,11 +400,11 @@
       overflow: hidden; opacity: 0; transition: opacity 1.1s ease;
     }
     #hero-vid {
-      position: absolute; top: -6%; left: -6%;
-      width: 112%; height: 112%;
+      position: absolute; top: -2%; left: -2%;
+      width: 104%; height: 104%;
       object-fit: cover; display: block;
       will-change: transform; transform-origin: center center;
-      filter: saturate(1.08) contrast(1.06) brightness(0.96);
+      filter: saturate(1.14) contrast(1.2) brightness(0.9);
     }
     /* Gold LUT pass via blend layer */
     .video-grade {
@@ -458,6 +511,83 @@
       cursor: pointer;
     }
 
+    /* ══════════════════════════════════════════
+       FLOATING PILL NAV — Phase 02
+    ══════════════════════════════════════════ */
+    .fnav-bar {
+      position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+      z-index: 9000; display: flex; align-items: center; gap: 30px;
+      padding: 10px 14px 10px 22px; border-radius: 999px; direction: rtl;
+      /* Liquid glass — beige (60% surface) */
+      background: linear-gradient(135deg, rgba(240,232,220,.55) 0%, rgba(233,226,213,.40) 100%);
+      backdrop-filter: blur(22px) saturate(1.7);
+      -webkit-backdrop-filter: blur(22px) saturate(1.7);
+      border: 1px solid rgba(255,255,255,.5);
+      box-shadow:
+        0 10px 36px -10px rgba(26,26,26,.28),
+        inset 0 1px 1px rgba(255,255,255,.75),
+        inset 0 -8px 18px -10px rgba(201,168,106,.25);
+      opacity: 0; pointer-events: none;
+      transition: transform .35s cubic-bezier(.4,0,.2,1),
+                  padding .35s cubic-bezier(.4,0,.2,1),
+                  background .35s ease, box-shadow .35s ease;
+    }
+    /* specular sheen — liquid-glass light reflection */
+    .fnav-bar::before {
+      content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+      background: linear-gradient(135deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 42%);
+      opacity: .85;
+    }
+    .fnav-bar > * { position: relative; }
+    .fnav-bar.compact {
+      transform: translateX(-50%) scale(.94);
+      padding-top: 7px; padding-bottom: 7px;
+      background: linear-gradient(135deg, rgba(240,232,220,.72) 0%, rgba(233,226,213,.56) 100%);
+      box-shadow:
+        0 8px 28px -10px rgba(26,26,26,.32),
+        inset 0 1px 1px rgba(255,255,255,.8);
+    }
+    .fnav-logo {
+      width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(201,168,106,.4); color: var(--gold);
+      font-family: 'Noto Naskh Arabic', serif; font-size: 18px; text-decoration: none;
+      transition: border-color .25s ease;
+    }
+    .fnav-logo:hover { border-color: rgba(201,168,106,.85); }
+    .fnav-links { display: flex; gap: 26px; }
+    .fnav-link {
+      font-family: 'Noto Naskh Arabic', serif; font-size: 14px;
+      color: rgba(26,26,26,.7); text-decoration: none;
+      white-space: nowrap; transition: color .25s ease;
+    }
+    .fnav-link:hover { color: var(--gold); }
+    .fnav-icons { display: flex; align-items: center; gap: 4px; }
+    .fnav-icon {
+      position: relative; width: 40px; height: 40px; border: none; background: none;
+      display: flex; align-items: center; justify-content: center; border-radius: 50%;
+      color: rgba(26,26,26,.66); cursor: pointer;
+      transition: background .25s ease, color .25s ease;
+    }
+    .fnav-icon:hover { color: var(--gold); background: rgba(201,168,106,.12); }
+    .fnav-burger { display: none; }
+    .fnav-cart-badge {
+      position: absolute; top: 2px; right: 2px; min-width: 16px; height: 16px;
+      padding: 0 4px; border-radius: 999px; background: var(--gold); color: var(--madinah);
+      font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .fnav-cart-badge.pulse { animation: cartPulse .4s cubic-bezier(.4,0,.2,1); }
+    @keyframes cartPulse { 0% { transform: scale(1); } 40% { transform: scale(1.4); } 100% { transform: scale(1); } }
+    @media (max-width: 760px) {
+      .fnav-bar { gap: 12px; padding: 8px 12px; top: 16px; }
+      .fnav-links { display: none; }
+      .fnav-burger { display: flex; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fnav-bar, .fnav-cart-badge.pulse { transition: none; animation: none; }
+    }
+
     /* Hero center */
     .h-center {
       position: absolute; top: 50%; left: 50%;
@@ -503,7 +633,7 @@
     /* Floating animation on pill */
     @keyframes float {
       0%,100% { transform: translateY(0px); }
-      50%      { transform: translateY(-7px); }
+      50%      { transform: translateY(-4px); }
     }
     .h-pill { animation: float 4.2s ease-in-out infinite; animation-play-state: paused; }
     .h-pill.floating { animation-play-state: running; }
@@ -541,19 +671,22 @@
     /* ── AUDIO PILL (Unseen signature) ── */
     .audio-pill {
       display: flex; align-items: center; gap: 12px;
-      background: rgba(14,43,34,.78); border-radius: 100px;
+      background: linear-gradient(135deg, rgba(240,232,220,.5) 0%, rgba(233,226,213,.36) 100%);
+      border-radius: 100px;
       padding: 9px 18px 9px 14px;
-      border: 1px solid rgba(201,168,106,.24);
-      color: white; font-size: 12px; letter-spacing: .14em;
+      border: 1px solid rgba(255,255,255,.45);
+      color: var(--ink); font-size: 12px; letter-spacing: .14em;
       text-transform: uppercase;
       font-family: 'DM Sans', sans-serif;
       pointer-events: all; cursor: none;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(16px) saturate(1.6);
+      -webkit-backdrop-filter: blur(16px) saturate(1.6);
+      box-shadow: 0 6px 20px -8px rgba(26,26,26,.25), inset 0 1px 1px rgba(255,255,255,.6);
       transition: background .3s, border-color .3s;
       animation: float 4.6s ease-in-out infinite .6s; animation-play-state: paused;
     }
     .audio-pill.floating { animation-play-state: running; }
-    .audio-pill:hover { background: rgba(14,43,34,.92); border-color: rgba(201,168,106,.5); }
+    .audio-pill:hover { background: linear-gradient(135deg, rgba(240,232,220,.66) 0%, rgba(233,226,213,.5) 100%); border-color: rgba(201,168,106,.4); }
     .audio-label { white-space: nowrap; opacity: .82; }
 
     /* Equalizer bars */
@@ -563,8 +696,9 @@
     }
     .audio-bars span {
       flex: 1; background: var(--gold);
-      height: 30%; transform-origin: bottom;
-      transition: height .25s;
+      height: 100%; transform-origin: bottom;
+      transform: scaleY(.3); will-change: transform;
+      transition: transform .25s;
     }
     .audio-pill.playing .audio-bars span {
       animation: eq 1.1s ease-in-out infinite;
@@ -573,8 +707,8 @@
     .audio-pill.playing .audio-bars span:nth-child(3) { animation-delay: .3s; }
     .audio-pill.playing .audio-bars span:nth-child(4) { animation-delay: .45s; }
     @keyframes eq {
-      0%, 100% { height: 25%; }
-      50%      { height: 95%; }
+      0%, 100% { transform: scaleY(.25); }
+      50%      { transform: scaleY(.95); }
     }
 
     /* ══════════════════════════════════════════
@@ -667,7 +801,7 @@
       background: rgba(0,0,0,.04); aspect-ratio: 3/4;
       position: relative; overflow: hidden;
       border: 1px solid rgba(201,168,106,.18);
-      cursor: none; transition: transform .6s;
+      cursor: none; transition: transform .25s cubic-bezier(.25,.46,.45,.94);
     }
     .cat-herbs .cat-card, .cat-ruh .cat-card {
       background: rgba(255,255,255,.04);
@@ -1034,9 +1168,91 @@
     .f-logo { display: block; text-decoration: none; }
     .f-logo img { height: 30px; object-fit: contain; opacity: .65; }
     .f-copy { font-size: 11px; color: var(--ink); opacity: .2; font-family: 'Noto Naskh Arabic', serif; }
-    .f-links { display: flex; gap: 22px; list-style: none; }
-    .f-links a { font-size: 11px; color: var(--ink); text-decoration: none; opacity: .32; transition: opacity .3s; }
-    .f-links a:hover { opacity: 1; }
+    .f-links { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; align-items: center; }
+    .f-links a { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; color: var(--ink); opacity: .28; transition: opacity .3s, color .3s; border-radius: 50%; }
+    .f-links a:hover { opacity: 1; color: var(--gold); }
+    .f-links svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ══════════════════════════════════════════
+       GIFT SECTION — Phase 07
+    ══════════════════════════════════════════ */
+    #gifts {
+      background: var(--madinah);
+      padding: clamp(80px,12vw,140px) clamp(24px,6vw,96px);
+      position: relative; overflow: hidden;
+    }
+    #gifts::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 28% 60%, rgba(201,168,106,.07) 0%, transparent 55%),
+                  radial-gradient(ellipse at 80% 15%, rgba(233,226,213,.04) 0%, transparent 50%);
+    }
+    .gifts-eyebrow {
+      font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold); opacity: .75; margin-bottom: 20px;
+    }
+    .gifts-heading {
+      font-family: 'Noto Naskh Arabic', serif; font-size: clamp(2.4rem,5vw,4.8rem);
+      font-weight: 400; color: var(--linen); line-height: 1.1; margin: 0 0 16px;
+    }
+    .gifts-sub {
+      font-size: clamp(.9rem,1.3vw,1.05rem); color: rgba(240,232,220,.42);
+      max-width: 440px; line-height: 1.75; margin-bottom: 48px;
+    }
+    .gifts-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 44px; }
+    .gift-tab {
+      font-family: 'Noto Naskh Arabic', serif; font-size: 13px;
+      padding: 9px 24px; border-radius: 100px;
+      border: 1px solid rgba(201,168,106,.25); color: rgba(240,232,220,.45);
+      background: transparent; cursor: pointer; transition: all .3s;
+    }
+    .gift-tab.active, .gift-tab:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,106,.08); }
+    .gifts-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-bottom: 48px;
+    }
+    .gift-card {
+      background: rgba(233,226,213,.04); border: 1px solid rgba(201,168,106,.14);
+      border-radius: 4px; padding: 30px 26px; cursor: pointer;
+      transition: border-color .35s, background .35s, transform .35s; position: relative;
+    }
+    .gift-card:hover { border-color: rgba(201,168,106,.42); background: rgba(233,226,213,.07); transform: translateY(-4px); }
+    .gift-card.selected { border-color: var(--gold); background: rgba(201,168,106,.10); }
+    .gift-card-check {
+      position: absolute; top: 16px; left: 16px; width: 18px; height: 18px;
+      border-radius: 50%; border: 1px solid rgba(201,168,106,.3);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .3s;
+    }
+    .gift-card.selected .gift-card-check { opacity: 1; border-color: var(--gold); }
+    .gift-card-check::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+    .gift-card-icon { font-size: 1.8rem; margin-bottom: 18px; line-height: 1; color: rgba(201,168,106,.5); }
+    .gift-card.selected .gift-card-icon { color: var(--gold); }
+    .gift-card-name { font-family: 'Noto Naskh Arabic', serif; font-size: 1.05rem; color: var(--linen); margin-bottom: 6px; }
+    .gift-card-name-en { font-family: 'Cormorant Garamond', serif; font-size: .78rem; color: rgba(240,232,220,.3); letter-spacing: .1em; margin-bottom: 12px; }
+    .gift-card-desc { font-size: .78rem; color: rgba(240,232,220,.38); line-height: 1.65; }
+    .gifts-message-label {
+      font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold); opacity: .65; margin-bottom: 12px; display: block;
+    }
+    .gifts-message {
+      width: 100%; max-width: 580px; display: block;
+      background: rgba(233,226,213,.04); border: 1px solid rgba(201,168,106,.18);
+      border-radius: 4px; padding: 16px 20px; resize: none;
+      font-family: 'Noto Naskh Arabic', serif; font-size: 14px; color: var(--linen);
+      direction: rtl; outline: none; transition: border-color .3s; margin-bottom: 36px;
+    }
+    .gifts-message:focus { border-color: rgba(201,168,106,.45); }
+    .gifts-message::placeholder { color: rgba(240,232,220,.18); }
+    .gifts-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--gold); color: var(--madinah);
+      padding: 16px 44px; border-radius: 100px;
+      font-family: 'Noto Naskh Arabic', serif; font-size: 15px; font-weight: 500;
+      cursor: none; transition: background .3s, transform .3s; letter-spacing: .02em;
+    }
+    .gifts-cta:hover { background: #d4b57a; transform: translateY(-2px); }
+    @media (max-width: 768px) {
+      .gifts-grid { grid-template-columns: 1fr; gap: 12px; }
+    }
 
     /* ══════════════════════════════════════════
        RESPONSIVE
@@ -1170,7 +1386,340 @@
       .f-links { gap: 16px; }
       .f-logo img { height: 26px; }
     }
+
+    /* ══════════════════════════════════════════
+       LOGO SEAL — Phase 01
+    ══════════════════════════════════════════ */
+    .hero-logo-seal {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      border: 1px solid rgba(233,226,213,.18);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: 30px; color: var(--sand);
+      margin: 0 auto 26px;
+      box-shadow: 0 0 28px rgba(233,226,213,.06);
+      opacity: 0;
+      transform: scale(.8);
+    }
+    @media (max-width: 768px) {
+      .hero-logo-seal { width: 52px; height: 52px; font-size: 22px; margin-bottom: 18px; }
+    }
+
+    /* ── brand logo animations ── */
+    .fnav-logo { perspective: 600px; }
+    .fnav-logo-img {
+      width: 28px; height: 28px; object-fit: contain;
+      transform-style: preserve-3d;
+      filter: drop-shadow(0 1px 3px rgba(201,168,106,.5));
+      animation: logoSway 9s ease-in-out infinite;
+    }
+    .seal-logo-img {
+      width: 86%; height: 86%; object-fit: contain;
+      filter: brightness(2.6) saturate(0.06);
+      opacity: 0.38;
+    }
+    @keyframes logoSway { 0%,100% { transform: rotateY(-15deg); } 50% { transform: rotateY(15deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      .fnav-logo-img { animation: none; }
+    }
+
+    /* ══════════════════════════════════════════
+       RITUAL SCROLL SECTION (Phase 06)
+    ══════════════════════════════════════════ */
+    #ritual {
+      height: 560vh;
+      position: relative;
+    }
+
+    .ritual-hero {
+      height: 100vh;
+      min-height: 100svh;
+      position: sticky;
+      top: 0;
+      overflow: hidden;
+      isolation: isolate;
+      background: var(--ink);
+    }
+
+    .ritual-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .ritual-media canvas,
+    .ritual-media .ritual-fallback {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    #ritualFramesBg {
+      z-index: 0;
+      filter: blur(30px) saturate(0.85) brightness(0.55);
+      opacity: 0.7;
+      transform: scale(1.12);
+    }
+
+    #ritualFrames {
+      z-index: 1;
+      filter: saturate(1.06) contrast(1.04) brightness(1.02);
+    }
+
+    .ritual-fallback {
+      z-index: 0;
+      object-fit: cover;
+      filter: blur(24px) brightness(0.5);
+      transform: scale(1.1);
+    }
+
+    .ritual-media.is-ready .ritual-fallback { opacity: 0; }
+
+    /* dark vignette overlay */
+    .ritual-vignette {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(8,5,3,.72) 0%, transparent 22%, transparent 72%, rgba(8,5,3,.88) 100%),
+        radial-gradient(ellipse at 50% 50%, transparent 42%, rgba(6,4,2,.42) 100%);
+    }
+
+    /* text overlay */
+    .ritual-content {
+      position: absolute;
+      inset: auto clamp(20px,4vw,64px) clamp(40px,6vw,70px);
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 24px;
+    }
+
+    .ritual-copy {}
+
+    .ritual-eyebrow {
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .75;
+      margin-bottom: 14px;
+    }
+
+    .ritual-heading {
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: clamp(2.4rem, 5.5vw, 5.2rem);
+      font-weight: 400;
+      color: var(--linen);
+      line-height: 1.1;
+      letter-spacing: -.01em;
+      margin: 0;
+    }
+
+    .ritual-sub {
+      font-size: clamp(.95rem, 1.4vw, 1.15rem);
+      color: rgba(240,232,220,.48);
+      margin-top: 18px;
+      line-height: 1.7;
+      max-width: 480px;
+    }
+
+    /* stage readout */
+    .ritual-stages {
+      min-width: 148px;
+      text-align: right;
+    }
+
+    .ritual-stage-index {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    .ritual-stages ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .ritual-stages li {
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(240,232,220,.32);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 9px;
+    }
+
+    .ritual-stages li::after {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: .38;
+      flex-shrink: 0;
+    }
+
+    .ritual-stages li.is-active {
+      color: var(--gold);
+    }
+
+    .ritual-stages li.is-active::after { opacity: 1; }
+
+    /* scroll hint at top */
+    .ritual-scroll-hint {
+      position: absolute;
+      top: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: calc(1 - var(--ritual-progress, 0) * 4);
+      transition: opacity .3s;
+    }
+
+    .ritual-scroll-hint span {
+      font-size: 9px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(201,168,106,.55);
+    }
+
+    .ritual-scroll-hint-line {
+      width: 1px;
+      height: 38px;
+      background: linear-gradient(180deg, rgba(201,168,106,.5), transparent);
+      animation: ritualHintDrop 1.8s ease-in-out infinite;
+    }
+
+    @keyframes ritualHintDrop {
+      0%,100% { transform: scaleY(1) translateY(0); opacity: 1; }
+      50% { transform: scaleY(.6) translateY(4px); opacity: .5; }
+    }
+
+    @media (max-width: 640px) {
+      .ritual-content { grid-template-columns: 1fr; }
+      .ritual-stages { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ritual-scroll-hint-line { animation: none; }
+    }
   </style>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://irthmadina.com/#organization",
+        "name": "إرث IRTH",
+        "alternateName": ["IRTH Madinah", "ارث", "Irth"],
+        "url": "https://irthmadina.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://irthmadina.com/assets/logo.svg",
+          "width": 400,
+          "height": 400
+        },
+        "image": "https://irthmadina.com/assets/og-home.jpg",
+        "description": "علامة تجارية فاخرة متخصصة في تمور المدينة المنورة والمنتجات الغذائية الأصيلة. Luxury food brand specialising in premium Madinah dates, Ajwa, Medjool, artisan olive oil, and heritage spices.",
+        "email": "hello@irthmadina.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "المدينة المنورة",
+          "addressRegion": "SA-MD",
+          "addressCountry": "SA"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 24.5247,
+          "longitude": 39.5692
+        },
+        "areaServed": [
+          {"@type": "Country", "name": "Saudi Arabia"},
+          {"@type": "Country", "name": "United Arab Emirates"},
+          {"@type": "Country", "name": "Kuwait"},
+          {"@type": "Country", "name": "Qatar"},
+          {"@type": "Country", "name": "Bahrain"},
+          {"@type": "Country", "name": "Oman"},
+          {"@type": "Country", "name": "Egypt"},
+          {"@type": "Country", "name": "United Kingdom"},
+          {"@type": "Country", "name": "Germany"},
+          {"@type": "Country", "name": "France"}
+        ],
+        "knowsAbout": ["Ajwa dates", "Medjool dates", "luxury food gifting", "تمور المدينة المنورة", "عجوة المدينة"],
+        "sameAs": []
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://irthmadina.com/#website",
+        "url": "https://irthmadina.com",
+        "name": "إرث IRTH",
+        "description": "تمور المدينة الفاخرة — Luxury Dates from Madinah",
+        "inLanguage": "ar",
+        "publisher": {"@id": "https://irthmadina.com/#organization"},
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {"@type": "EntryPoint", "urlTemplate": "https://irthmadina.com/collection.html?q={search_term_string}"},
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://irthmadina.com/#webpage",
+        "url": "https://irthmadina.com/",
+        "name": "إرث IRTH — تمور المدينة الفاخرة · Luxury Dates from Madinah",
+        "description": "تمور عجوة ومجول من قلب المدينة المنورة. هدايا فاخرة وتوريد بالجملة.",
+        "isPartOf": {"@id": "https://irthmadina.com/#website"},
+        "about": {"@id": "https://irthmadina.com/#organization"},
+        "inLanguage": "ar"
+      },
+      {
+        "@type": "Product",
+        "@id": "https://irthmadina.com/#ajwa-dates",
+        "name": "تمور العجوة المجلّلة من المدينة المنورة",
+        "alternateName": "Premium Ajwa Dates — Madinah",
+        "description": "عجوة المدينة المنورة المختارة يدوياً من أجود بساتين العوالي. متوفرة بعبوات هدائية فاخرة للأفراد والشركات والجملة.",
+        "brand": {"@id": "https://irthmadina.com/#organization"},
+        "image": "https://irthmadina.com/assets/dates-cream-linen.png",
+        "category": "Luxury Food / Premium Dates / تمور فاخرة",
+        "keywords": "عجوة المدينة، تمور فاخرة، Ajwa dates, Madinah dates, luxury dates, تمور المدينة",
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "B2B Wholesalers, Corporate Buyers, Luxury Retailers, Gift Buyers"
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "SAR",
+          "seller": {"@id": "https://irthmadina.com/#organization"},
+          "areaServed": "SA AE KW QA BH OM EG GB DE FR"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -1240,8 +1789,13 @@
 <!-- ── TRANSITION OVERLAY — fullscreen cinematic ── -->
 <div id="trans-overlay">
   <!-- Fullscreen landscape video -->
-  <video id="trans-vid" playsinline preload="auto" aria-hidden="true">
-    <source src="assets/transition.mp4" type="video/mp4">
+  <video id="trans-vid" playsinline muted preload="auto" aria-hidden="true" poster="assets/intro-poster.jpg">
+    <!-- Intro video: architecture cinematic, no audio. Dual-source after bash compress-media.sh -->
+    <source media="(max-width: 768px)" src="assets/intro-mobile.webm" type="video/webm">
+    <source media="(max-width: 768px)" src="assets/intro-mobile.mp4"  type="video/mp4">
+    <source src="assets/intro-desktop.webm" type="video/webm">
+    <source src="assets/intro-desktop.mp4"  type="video/mp4">
+    <source src="assets/intro.mp4" type="video/mp4"><!-- raw fallback until compression run -->
   </video>
   <!-- Color grade layers -->
   <div class="film-grade"></div>
@@ -1266,8 +1820,14 @@
 
 <!-- ── VIDEO HERO ── -->
 <div id="video-hero">
-  <video id="hero-vid" autoplay muted loop playsinline>
-    <source src="assets/hero.mp4" type="video/mp4">
+  <video id="hero-vid" autoplay muted loop playsinline poster="assets/hero-poster.jpg">
+    <!-- Phase 04 dual-source: webm (VP9) first for Chrome/FF savings, H.264 mp4 for Safari/fallback.
+         Browser picks first matching <source>; falls through if a file is missing. -->
+    <source media="(max-width: 768px)" src="assets/hero-mobile.webm" type="video/webm">
+    <source media="(max-width: 768px)" src="assets/hero-mobile.mp4"  type="video/mp4">
+    <source src="assets/hero-desktop.webm" type="video/webm">
+    <source src="assets/hero-desktop.mp4"  type="video/mp4">
+    <source src="assets/hero.mp4" type="video/mp4"><!-- fallback until compression run -->
   </video>
   <div class="video-grade"></div>
   <div class="video-vignette"></div>
@@ -1277,37 +1837,18 @@
 
 <!-- ── HERO UI ── -->
 <div id="hud">
-  <nav>
-    <a href="index.html" class="n-logo">
-      <img src="assets/logo.svg" alt="إرث IRTH">
-    </a>
-    <ul class="n-links">
-      <li><a href="collection.html" class="nav-veil-link">المجموعة</a></li>
-      <li><a href="about.html" class="nav-veil-link">قصتنا</a></li>
-      <li><a href="journal.html" class="nav-veil-link">المجلة</a></li>
-      <li><a href="#contact">تواصل</a></li>
-    </ul>
-    <div class="n-dot"><span>···</span></div>
-    <button class="n-burger" id="n-burger" aria-label="فتح القائمة" aria-expanded="false">
-      <span></span><span></span>
-    </button>
-  </nav>
-
   <div class="h-center">
     <div class="h-eyebrow">From the Heart of Arab Heritage · من قلب الموروث</div>
+    <div class="hero-logo-seal" data-anim="seal-mark"><img src="assets/logo.svg" class="seal-logo-img" alt="إرث"></div>
     <h1 class="h-title">
-      <span class="h-line-wrap"><span class="inner ar-line">الموروث</span></span>
-      <span class="h-line-wrap"><span class="inner ar-line-bold">يُصنع الأثر</span></span>
+      <span class="h-line-wrap"><span class="inner ar-line">من تراب المدينة</span></span>
+      <span class="h-line-wrap"><span class="inner ar-line-bold">إلى مائدتك</span></span>
     </h1>
-    <a href="collection.html" class="h-pill nav-veil-link">اكتشف المجموعة ↘</a>
+    <a href="collection.html" class="h-pill nav-veil-link">ابدأ رحلتك مع الإرث ↘</a>
   </div>
 
   <div class="h-bottom">
     <div class="h-bottom-group">
-      <div class="origin-pill">
-        <div class="origin-icon">◈</div>
-        <span class="origin-ar">المدينة المنورة</span>
-      </div>
       <button class="audio-pill" id="audio-pill" aria-label="Toggle ambient audio">
         <span class="audio-bars"><span></span><span></span><span></span><span></span></span>
         <span class="audio-label">Madinah · Ambient</span>
@@ -1322,6 +1863,30 @@
   <source src="assets/ambient.mp3" type="audio/mpeg">
 </audio>
 
+<!-- ── FLOATING PILL NAV — Phase 02 (persistent, outside #hud) ── -->
+<nav class="fnav-bar" id="fnavBar" aria-label="التنقل الرئيسي">
+  <a href="index.html" class="fnav-logo" aria-label="إرث · الصفحة الرئيسية"><img src="assets/logo.svg" class="fnav-logo-img" alt="إرث"></a>
+  <div class="fnav-links">
+    <a href="index.html" class="fnav-link">الرئيسية</a>
+    <a href="collection.html" class="fnav-link nav-veil-link">المجموعة</a>
+    <a href="about.html" class="fnav-link nav-veil-link">قصتنا</a>
+    <a href="journal.html" class="fnav-link nav-veil-link">المجلة</a>
+  </div>
+  <div class="fnav-icons">
+    <button class="fnav-icon" id="fnavSearch" aria-label="بحث">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+    </button>
+    <button class="fnav-icon" id="fnavCart" aria-label="السلة">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+      <span class="fnav-cart-badge" id="cartCount">0</span>
+    </button>
+    <button class="fnav-icon fnav-burger" id="fnavBurger" aria-label="فتح القائمة" aria-expanded="false">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
+    </button>
+  </div>
+</nav>
+<div id="navSentinel" aria-hidden="true" style="position:absolute;top:80px;left:0;height:1px;width:1px;pointer-events:none"></div>
+
 <!-- Mobile nav drawer — outside #hud so opacity:0 on hud doesn't affect it -->
 <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
   <button class="mobile-nav-close" id="mobile-nav-close" aria-label="إغلاق القائمة">✕</button>
@@ -1335,6 +1900,47 @@
 <div id="page">
   <div class="scroll-space"></div>
 
+  <!-- ── RITUAL SCROLL SECTION (Phase 06) — box-opening frame sequence ── -->
+  <section id="ritual" data-section="00a" data-section-name="Ritual">
+    <div class="ritual-hero">
+
+      <!-- Canvas frame player -->
+      <div class="ritual-media" aria-hidden="true">
+        <canvas id="ritualFramesBg"></canvas>
+        <canvas id="ritualFrames"></canvas>
+        <img class="ritual-fallback" src="assets/frames-v3/irth_0001.jpg" alt="">
+      </div>
+
+      <!-- Overlay vignette -->
+      <div class="ritual-vignette"></div>
+
+      <!-- Scroll hint -->
+      <div class="ritual-scroll-hint">
+        <span>اسحب للأسفل</span>
+        <div class="ritual-scroll-hint-line"></div>
+      </div>
+
+      <!-- Bottom text -->
+      <div class="ritual-content">
+        <div class="ritual-copy">
+          <div class="ritual-eyebrow">The Opening Ritual · طقس الفتح</div>
+          <h2 class="ritual-heading">صندوق التمر<br>يُفتح ببطء</h2>
+          <p class="ritual-sub">كل تمرة تروي حكاية. اسحب للأسفل لتشهد لحظة الكشف.</p>
+        </div>
+        <div class="ritual-stages" aria-label="مراحل الفتح">
+          <span class="ritual-stage-index">01</span>
+          <ol>
+            <li class="is-active" data-ritual-stage="0">مُختوم</li>
+            <li data-ritual-stage="1">رفع الغطاء</li>
+            <li data-ritual-stage="2">الكشف</li>
+            <li data-ritual-stage="3">التقديم</li>
+          </ol>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Products Grid -->
   <section id="products" data-section="01" data-section-name="Collection">
     <div class="sec-hd">
@@ -1345,7 +1951,7 @@
       <a href="collection.html" class="view-all nav-veil-link">المجموعة الكاملة ↘</a>
     </div>
     <div class="prod-grid">
-      <div class="prod-card" data-prod-num="01" data-prod-ar="التمور المجلّلة" data-prod-en="Premium Dates" data-prod-origin="المدينة المنورة" data-prod-img="assets/dates-cream-linen.png" data-prod-desc="Hand-selected Ajwa and Medjoul dates from Madinah's finest farms." data-prod-desc-ar="تمور عجوة ومجول من المدينة المنورة، تُختار يدويًا، غنية بالمغذيات، محاطة بعبوة إرث الفاخرة.">
+      <div class="prod-card" data-prod-num="01" data-prod-ar="التمور المجلّلة" data-prod-en="Premium Dates" data-prod-origin="المدينة المنورة" data-prod-img="assets/dates-cream-linen.png" data-prod-desc="Hand-selected Ajwa and Medjoul dates from Madinah's finest farms." data-prod-desc-ar="عجوة ومجول، يُقطفان في موسم النضج فقط من نخيل العوالي. كل حبة تُفرز يدويًا قبل أن تستقر في صندوقها.">
         <div class="prod-img"><img src="assets/dates-cream-linen.png" alt="تمور إرث الفاخرة"></div>
         <div class="prod-meta">
           <div class="prod-num">01</div>
@@ -1414,9 +2020,9 @@
     <div class="cat-text">
       <div class="cat-num">— 01 · القسم الأول</div>
       <h2 class="cat-ar">التمر</h2>
-      <div class="cat-en">From the palms of <em>Madinah</em></div>
+      <div class="cat-en">Sweetness, harvested by hand</div>
       <div class="cat-rule"></div>
-      <p class="cat-desc">تمور تُختار من أعرق بساتين العوالي والحرة، تُجفّف على شُعاع الشمس، وتُغلّف بعناية تليق بمن ورّثها لنا.</p>
+      <p class="cat-desc">عجوة ومجول، يُقطفان في موسم النضج فقط من نخيل العوالي. كل حبة تُفرز يدويًا قبل أن تستقر في صندوقها.</p>
       <a href="collection.html#tamr" class="cat-cta nav-veil-link">اكتشف التمر ↘</a>
     </div>
     <div class="cat-grid">
@@ -1443,7 +2049,7 @@
     <div class="cat-text">
       <div class="cat-num">— 02 · القسم الثاني</div>
       <h2 class="cat-ar">أعشاب المدينه</h2>
-      <div class="cat-en">Herbs of <em>the holy soil</em></div>
+      <div class="cat-en">Dried slow. Kept close.</div>
       <div class="cat-rule"></div>
       <p class="cat-desc">نعناع، قرفة، إكليل جبل — أعشاب جُمعت من مزارع المدينة، مجفّفة طبيعيًا، تحمل رائحة الأرض الأصلية في كل حبّة.</p>
       <a href="collection.html#herbs" class="cat-cta nav-veil-link">اكتشف الأعشاب ↘</a>
@@ -1472,7 +2078,7 @@
     <div class="cat-text">
       <div class="cat-num">— 03 · القسم الثالث</div>
       <h2 class="cat-ar">روح المدينه</h2>
-      <div class="cat-en">The <em>essence</em> of Madinah</div>
+      <div class="cat-en">What lingers after</div>
       <div class="cat-rule"></div>
       <p class="cat-desc">عسل السدر، زيت العود، زيت الزيتون — جواهر تحمل رائحة الأرض وذاكرة الأجداد، تُهدى بحبّ، تُذكر إلى الأبد.</p>
       <a href="collection.html#ruh" class="cat-cta nav-veil-link">اكتشف الروح ↘</a>
@@ -1597,9 +2203,9 @@
       <p class="story-body-ar">
         إرث ليس مجرد علامة تجارية — إنه التزام بإعادة ما أعطته الأرض بكرم وأمانة. نبحث عن أجود المكوّنات في أصولها الحقيقية: تمور المدينة المنورة، عسل حضرموت، زيتون فلسطين، وعود آسيا — لنقدّمها في صورة تليق بما تستحق.
       </p>
-      <p class="story-body">
-        Every ingredient has a story, a geography, a people behind it. We honor that by going direct — no intermediaries, no compromise on quality or integrity.
-      </p>
+      <p class="story-body">We chose patience over speed.</p>
+      <p class="story-body">Source over shortcuts.</p>
+      <p class="story-body">That is the only way heritage survives.</p>
       <div class="story-stats">
         <div class="stat">
           <div class="stat-num" data-count="6">0</div>
@@ -1628,26 +2234,69 @@
     <div class="vals-grid">
       <div class="val">
         <div class="val-num">01</div>
-        <div class="val-name-ar">النقاء</div>
+        <div class="val-name-ar">المصدر</div>
         <div class="val-name">Pure<br><em>Origins</em></div>
         <div class="val-desc">Every ingredient selected at its purest form — no additives, no compromise.</div>
-        <div class="val-desc-ar">كل مكوّن يُختار في أنقى صوره، دون إضافات أو حلول وسط.</div>
+        <div class="val-desc-ar">كل شحنة نزورها بأنفسنا — من البستان إلى الصندوق</div>
       </div>
       <div class="val">
         <div class="val-num">02</div>
-        <div class="val-name-ar">التراث</div>
+        <div class="val-name-ar">الجودة</div>
         <div class="val-name">Deep<br><em>Heritage</em></div>
         <div class="val-desc">Rooted in centuries of Arab culinary tradition — each product carries memory.</div>
-        <div class="val-desc-ar">متجذّر في قرون من التراث العربي، كل منتج يحمل ذاكرة من سبقوا.</div>
+        <div class="val-desc-ar">لا نقبل ما لا نقدمه على مائدتنا</div>
       </div>
       <div class="val">
         <div class="val-num">03</div>
-        <div class="val-name-ar">الأثر</div>
+        <div class="val-name-ar">الاستمرارية</div>
         <div class="val-name">Lasting<br><em>Impact</em></div>
         <div class="val-desc">Products that leave an impression on your senses, your table, your lineage.</div>
-        <div class="val-desc-ar">منتجات تترك أثرًا على حواسك، ومائدتك، والأجيال القادمة.</div>
+        <div class="val-desc-ar">نفس العائلات، نفس الأرض، كل موسم</div>
       </div>
     </div>
+  </section>
+
+  <!-- Gift Customization -->
+  <section id="gifts" data-section="04b" data-section-name="Gifts">
+    <div class="gifts-eyebrow">Gift Customization · تخصيص الهدية</div>
+    <h2 class="gifts-heading">هدية تليق<br><span style="color:var(--gold)">بكل مناسبة</span></h2>
+    <p class="gifts-sub">اختر الباقة المناسبة، خصّص رسالتك، واجعل هديتك لا تُنسى.</p>
+
+    <div class="gifts-tabs" role="tablist">
+      <button class="gift-tab active" data-occasion="ramadan">رمضان الكريم</button>
+      <button class="gift-tab" data-occasion="eid">الأعياد والمناسبات</button>
+      <button class="gift-tab" data-occasion="wedding">الأعراس والخطوبة</button>
+      <button class="gift-tab" data-occasion="corporate">الشركات والأعمال</button>
+    </div>
+
+    <div class="gifts-grid">
+      <div class="gift-card selected" data-pkg="classic">
+        <div class="gift-card-check"></div>
+        <div class="gift-card-icon">◈</div>
+        <div class="gift-card-name">الكلاسيك</div>
+        <div class="gift-card-name-en">Classic Heritage</div>
+        <div class="gift-card-desc">صندوق خشبي مُبطّن بالمخمل مع ختم شمعي يحمل شعار إرث. مثالي للإهداء الرسمي.</div>
+      </div>
+      <div class="gift-card" data-pkg="signature">
+        <div class="gift-card-check"></div>
+        <div class="gift-card-icon">◇</div>
+        <div class="gift-card-name">السيجنتشر</div>
+        <div class="gift-card-name-en">Signature Edition</div>
+        <div class="gift-card-desc">علبة مذهّبة مع طباعة اسم المُهدى إليه. لمسة شخصية لا مثيل لها.</div>
+      </div>
+      <div class="gift-card" data-pkg="royal">
+        <div class="gift-card-check"></div>
+        <div class="gift-card-icon">⬡</div>
+        <div class="gift-card-name">الرويال</div>
+        <div class="gift-card-name-en">Royal Collection</div>
+        <div class="gift-card-desc">طقم متكامل في صندوق فاخر مع ورد مجفّف وبطاقة بالخط العربي اليدوي.</div>
+      </div>
+    </div>
+
+    <label class="gifts-message-label" for="giftMessage">رسالتك الخاصة · Personal Message</label>
+    <textarea class="gifts-message" id="giftMessage" rows="3" placeholder="اكتب هنا رسالتك... مثال: بمناسبة رمضان الكريم، أهدي إليك أجود تمور المدينة."></textarea>
+
+    <a href="mailto:hello@irthmadina.com" class="gifts-cta">ابدأ تخصيص هديتك ↘</a>
   </section>
 
   <!-- Contact -->
@@ -1656,8 +2305,8 @@
     <h2 class="contact-title">
       <span class="ar">تواصل</span><br><span class="it">with us</span>
     </h2>
-    <a href="mailto:hello@irth.co" class="contact-email">hello@irth.co</a>
-    <a href="mailto:hello@irth.co" class="contact-btn">
+    <a href="mailto:hello@irthmadina.com" class="contact-email">hello@irthmadina.com</a>
+    <a href="mailto:hello@irthmadina.com" class="contact-btn">
       <span>ابدأ شراكة</span><span>↘</span>
     </a>
   </section>
@@ -1666,9 +2315,21 @@
     <a href="index.html" class="f-logo"><img src="assets/logo.svg" alt="إرث IRTH"></a>
     <span class="f-copy">© ٢٠٢٦ إرث IRTH · جميع الحقوق محفوظة</span>
     <ul class="f-links">
-      <li><a href="#">Instagram</a></li>
-      <li><a href="#">LinkedIn</a></li>
-      <li><a href="#">WhatsApp</a></li>
+      <li><a href="#" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a></li>
+      <li><a href="#" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a></li>
+      <li><a href="#" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.69a8.19 8.19 0 0 0 4.79 1.53V6.77a4.84 4.84 0 0 1-1.03-.08z"/></svg>
+      </a></li>
+      <li><a href="#" aria-label="X / Twitter">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a></li>
+      <li><a href="#" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </a></li>
     </ul>
   </footer>
 </div>
@@ -1686,7 +2347,7 @@
     <p class="ov-desc" id="ov-desc"></p>
     <p class="ov-desc-ar" id="ov-desc-ar"></p>
     <span class="ov-origin" id="ov-origin"></span>
-    <a href="mailto:hello@irth.co" class="ov-order nav-veil-link">اطلب الآن ↘</a>
+    <a href="mailto:hello@irthmadina.com" class="ov-order nav-veil-link">اطلب الآن ↘</a>
   </div>
   <button class="ov-close" id="ov-close" aria-label="إغلاق">✕</button>
 </div>
@@ -1739,16 +2400,24 @@
   const curLabel = document.getElementById('cur-label');
   let mx = 0, my = 0, rx = 0, ry = 0;
 
-  window.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    gsap.to(cur, { x: mx, y: my, duration: 0.07 });
-    gsap.set(curLabel, { x: mx, y: my });
-  });
-  (function rf() {
-    rx += (mx - rx) * 0.1; ry += (my - ry) * 0.1;
-    gsap.set(curRing, { x: rx, y: ry });
-    requestAnimationFrame(rf);
-  })();
+  const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (REDUCED_MOTION) document.documentElement.classList.add('reduced-motion');
+
+  if (!REDUCED_MOTION) {
+    window.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      gsap.to(cur, { x: mx, y: my, duration: 0.07 });
+      gsap.set(curLabel, { x: mx, y: my });
+    });
+    (function rf() {
+      rx += (mx - rx) * 0.1; ry += (my - ry) * 0.1;
+      gsap.set(curRing, { x: rx, y: ry });
+      requestAnimationFrame(rf);
+    })();
+  } else {
+    document.body.style.cursor = 'auto';
+    [cur, curRing, curLabel].forEach(el => { if (el) el.style.display = 'none'; });
+  }
 
   function setCursorLabel(txt) {
     curLabel.textContent = txt;
@@ -1915,15 +2584,14 @@
 
   function animateHeroIn() {
     const tl = gsap.timeline({ delay: 0.55 });
-    tl.fromTo('nav', { y: -28, opacity: 0 }, { y: 0, opacity: 1, duration: .8, ease: 'power2.out' })
-      .to('.n-links a', { opacity: 0.65, duration: .5, stagger: .08 }, '-=.5')
-      .to('.n-dot',     { opacity: 1, duration: .4 }, '-=.3')
+    tl.fromTo('.fnav-bar', { y: -22, opacity: 0 }, { y: 0, opacity: 1, pointerEvents: 'all', duration: .8, ease: 'power2.out' })
       .fromTo('.h-eyebrow', { opacity: 0, y: 10 }, { opacity: 0.6, y: 0, duration: .6 }, '-=.4')
+      .fromTo('.hero-logo-seal', { opacity: 0, scale: .8 }, { opacity: 1, scale: 1, duration: .3, ease: 'power2.out' }, '-=.35')
       .fromTo('.h-line-wrap:nth-child(1) .inner',
         { yPercent: 110 }, { yPercent: 0, duration: 1.05, ease: 'power3.out' }, '-=.35')
       .fromTo('.h-line-wrap:nth-child(2) .inner',
         { yPercent: 110 }, { yPercent: 0, duration: 1.05, ease: 'power3.out' }, '-=.85')
-      .fromTo('.h-pill',   { opacity: 0, y: 16, scale: .95 }, { opacity: 1, y: 0, scale: 1, duration: .6, onComplete: () => { document.querySelector('.h-pill').classList.add('floating'); document.querySelector('.origin-pill').classList.add('floating'); const ap=document.querySelector('.audio-pill'); if(ap) ap.classList.add('floating'); } }, '-=.5')
+      .fromTo('.h-pill',   { opacity: 0, y: 16, scale: .95 }, { opacity: 1, y: 0, scale: 1, duration: .6, onComplete: () => { document.querySelector('.h-pill').classList.add('floating'); const ap=document.querySelector('.audio-pill'); if(ap) ap.classList.add('floating'); } }, '-=.5')
       .fromTo('.h-bottom', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: .6 }, '-=.45');
   }
 
@@ -1961,26 +2629,35 @@
     finishCalled = true;
     transVid.pause();
     _activateHero();
-    // Letterbox bars open outward
-    gsap.to(filmLbTop, { yPercent: -100, duration: 1.1, ease: 'power3.inOut' });
-    gsap.to(filmLbBot, { yPercent: 100, duration: 1.1, ease: 'power3.inOut' });
-    // Title fade if still visible
-    gsap.to(filmTitle, { opacity: 0, duration: .5, ease: 'power2.in' });
-    // Flash → iris collapse → hero
+    // Letterbox bars recede
+    gsap.to(filmLbTop, { yPercent: -100, duration: 1.4, ease: 'power3.inOut' });
+    gsap.to(filmLbBot, { yPercent: 100, duration: 1.4, ease: 'power3.inOut' });
+    gsap.to(filmTitle, { opacity: 0, duration: .4, ease: 'power2.in' });
+    // Cinematic dissolve: video blurs + darkens → hero emerges underneath
     setTimeout(() => {
-      gsap.to(transFlash, { opacity: 1, duration: .18, ease: 'power2.in', onComplete: () => {
-        document.getElementById('letterbox-top').classList.add('recede');
-        document.getElementById('letterbox-bot').classList.add('recede');
-        gsap.to(transOverlay, {
-          clipPath: 'circle(0% at 50% 44%)',
-          opacity: 0,
-          duration: 1.4,
-          ease: 'power2.inOut',
-          delay: .05,
-          onComplete: () => { transOverlay.style.display = 'none'; }
-        });
-      }});
-    }, 900);
+      // Step 1 — intro video blurs out while hero is already fading in behind it
+      gsap.to(transVid, {
+        opacity: 0,
+        filter: 'blur(14px) brightness(0.3)',
+        scale: 1.06,
+        duration: 1.0,
+        ease: 'power2.in'
+      });
+      // Step 2 — dark overlay flashes up then the whole overlay collapses
+      gsap.to(transFlash, { opacity: 1, duration: .55, ease: 'power2.inOut', delay: .55,
+        onComplete: () => {
+          document.getElementById('letterbox-top').classList.add('recede');
+          document.getElementById('letterbox-bot').classList.add('recede');
+          gsap.to(transOverlay, {
+            opacity: 0,
+            duration: .9,
+            ease: 'power2.inOut',
+            delay: .08,
+            onComplete: () => { transOverlay.style.display = 'none'; }
+          });
+        }
+      });
+    }, 150);
   }
 
   function doEnter() {
@@ -2000,11 +2677,7 @@
         // Video fade in
         gsap.to(transVid, { opacity: 1, duration: .55, ease: 'power2.out' });
         transVid.classList.add('playing');
-        transVid.muted = false;
-        transVid.play().catch(() => {
-          transVid.muted = true;
-          transVid.play().catch(() => {});
-        });
+        transVid.play().catch(() => {});
         // Letterbox bars slide IN — cinematic crop
         gsap.to(filmLbTop, { yPercent: 0, duration: .75, ease: 'power3.out', delay: .1 });
         gsap.to(filmLbBot, { yPercent: 0, duration: .75, ease: 'power3.out', delay: .1 });
@@ -2018,8 +2691,8 @@
       }
     });
     transVid.addEventListener('ended', finishEnter, { once: true });
-    // Safety fallback (14s)
-    setTimeout(finishEnter, 14000);
+    // Safety gate — fires at 10.5s if 'ended' event doesn't fire (e.g. mobile autoplay blocked)
+    setTimeout(finishEnter, 10500);
   }
 
   function doEnterDirect() {
@@ -2035,8 +2708,18 @@
     }, 850);
   }
 
-  document.getElementById('e-enter').addEventListener('click', doEnter);
-  document.getElementById('e-skip').addEventListener('click', e => { e.preventDefault(); doEnterDirect(); });
+  // ── Stage 1 audio (Phase 05): warm-load ambient buffer on entry. Audio is
+  //    preload="none" for perf; the entry click is a user gesture, so load() now
+  //    means the pill toggle plays instantly later. Entry itself stays SILENT. ──
+  let _ambientWarmed = false;
+  function warmAmbient() {
+    if (_ambientWarmed) return;
+    _ambientWarmed = true;
+    const amb = document.getElementById('amb-track');
+    if (amb) { try { amb.load(); } catch (e) {} }
+  }
+  document.getElementById('e-enter').addEventListener('click', () => { warmAmbient(); doEnter(); });
+  document.getElementById('e-skip').addEventListener('click', e => { e.preventDefault(); warmAmbient(); doEnterDirect(); });
 
   /* ══════════════════════════════════════════
      SECTION INDICATOR
@@ -2081,6 +2764,18 @@
     const section = document.getElementById('hscroll-section');
     const track   = document.getElementById('hscroll-track');
 
+    // Reduced-motion: no scroll-jacking pin — make showcase a simple swipeable strip
+    if (REDUCED_MOTION) {
+      section.style.height = 'auto';
+      const sticky = document.getElementById('hscroll-sticky');
+      if (sticky) { sticky.style.position = 'static'; sticky.style.overflowX = 'auto'; }
+      track.style.willChange = 'auto';
+      return;
+    }
+
+    track.style.willChange = 'transform';
+    track.style.backfaceVisibility = 'hidden';
+
     const totalWidth = track.scrollWidth;
     const extraScroll = totalWidth - window.innerWidth;
 
@@ -2114,6 +2809,12 @@
     ScrollTrigger.create({
       start: 'top top', end: 'bottom bottom',
       onUpdate: self => { prog.style.width = (self.progress * 100) + '%'; }
+    });
+
+    // Seal logo — beige dust dissolve as hero scrolls away
+    gsap.to('.hero-logo-seal', {
+      opacity: 0, scale: 2.4, filter: 'blur(20px)',
+      scrollTrigger: { trigger: '.scroll-space', start: 'top top', end: '22% top', scrub: 1.2 }
     });
 
     // Video zoom
@@ -2287,16 +2988,160 @@
       }
     }, { passive: true });
 
+    /* ── RITUAL FRAME SEQUENCER (Phase 06) ── */
+    (function initRitual() {
+      const FRAME_COUNT = 240;
+      const FRAME_PATH  = 'assets/frames-v3/irth_';
+
+      const ritualScene = document.getElementById('ritual');
+      const ritualHero  = document.querySelector('.ritual-hero');
+      const mainCanvas  = document.getElementById('ritualFrames');
+      const bgCanvas    = document.getElementById('ritualFramesBg');
+      if (!ritualScene || !mainCanvas) return;
+
+      const ctx   = mainCanvas.getContext('2d');
+      const bgCtx = bgCanvas.getContext('2d');
+
+      const frames = new Array(FRAME_COUNT);
+      let curFrame = -1, canvasW = 0, canvasH = 0, ticking = false;
+
+      const stageEls   = [...document.querySelectorAll('[data-ritual-stage]')];
+      const stageNum   = document.querySelector('.ritual-stage-index');
+      const frameUrl   = i => `${FRAME_PATH}${String(i+1).padStart(4,'0')}.jpg`;
+
+      function loadFrame(i) {
+        if (frames[i]) return frames[i];
+        const img = new Image();
+        img.decoding = 'async';
+        img.src = frameUrl(i);
+        frames[i] = img;
+        return img;
+      }
+
+      function resizeCanvas() {
+        const r   = mainCanvas.getBoundingClientRect();
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const w = Math.max(1, Math.round(r.width * dpr));
+        const h = Math.max(1, Math.round(r.height * dpr));
+        if (w === canvasW && h === canvasH) return;
+        canvasW = w; canvasH = h;
+        mainCanvas.width = w; mainCanvas.height = h;
+        bgCanvas.width   = w; bgCanvas.height   = h;
+        curFrame = -1;
+      }
+
+      function paintCover(tCtx, img) {
+        const s  = Math.max(canvasW / img.naturalWidth, canvasH / img.naturalHeight);
+        const sw = canvasW / s, sh = canvasH / s;
+        const sx = (img.naturalWidth - sw) / 2, sy = (img.naturalHeight - sh) / 2;
+        tCtx.clearRect(0, 0, canvasW, canvasH);
+        tCtx.drawImage(img, sx, sy, sw, sh, 0, 0, canvasW, canvasH);
+      }
+
+      function paintContain(tCtx, img) {
+        const s  = Math.min(canvasW / img.naturalWidth, canvasH / img.naturalHeight) * 0.98;
+        const dw = img.naturalWidth * s, dh = img.naturalHeight * s;
+        tCtx.clearRect(0, 0, canvasW, canvasH);
+        tCtx.drawImage(img, (canvasW - dw) / 2, (canvasH - dh) / 2, dw, dh);
+      }
+
+      function drawFrame(i) {
+        resizeCanvas();
+        if (i === curFrame) return;
+        const img = loadFrame(i);
+        const paint = () => {
+          paintCover(bgCtx, img);
+          paintContain(ctx, img);
+          curFrame = i;
+          document.querySelector('.ritual-media').classList.add('is-ready');
+        };
+        if (img.complete && img.naturalWidth > 0) paint();
+        else img.addEventListener('load', paint, { once: true });
+      }
+
+      function warmFrames(i) {
+        const r = 8;
+        for (let f = Math.max(0, i-r); f <= Math.min(FRAME_COUNT-1, i+r); f++) loadFrame(f);
+      }
+
+      function getProgress() {
+        const rect = ritualScene.getBoundingClientRect();
+        const scrollable = Math.max(1, rect.height - window.innerHeight);
+        return Math.min(1, Math.max(0, -rect.top / scrollable));
+      }
+
+      function updateStages(p) {
+        const s = Math.min(3, Math.floor(p * 4));
+        stageEls.forEach((el, i) => el.classList.toggle('is-active', i === s));
+        if (stageNum) stageNum.textContent = String(s+1).padStart(2,'0');
+      }
+
+      function applyProgress() {
+        const p  = getProgress();
+        const fi = Math.round(p * (FRAME_COUNT - 1));
+        ritualHero.style.setProperty('--ritual-progress', p.toFixed(4));
+        drawFrame(fi);
+        warmFrames(fi);
+        updateStages(p);
+      }
+
+      function requestUpdate() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => { applyProgress(); ticking = false; });
+      }
+
+      // Preload first 16 frames immediately
+      for (let i = 0; i < 16; i++) loadFrame(i);
+
+      lenis.on('scroll', requestUpdate);
+      window.addEventListener('resize', () => { curFrame = -1; requestUpdate(); }, { passive: true });
+      requestUpdate();
+    })();
+
     // Horizontal scroll
     initHScroll();
+
+    /* ── GIFTS SECTION — tab + card interactivity ── */
+    document.querySelectorAll('.gift-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.gift-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+    document.querySelectorAll('.gift-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.gift-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+      });
+    });
   }
 
   /* ══════════════════════════════════════════
      MOBILE NAV
   ══════════════════════════════════════════ */
-  const burger    = document.getElementById('n-burger');
-  const mobileNav = document.getElementById('mobile-nav');
+  const fnavBar     = document.getElementById('fnavBar');
+  const navSentinel = document.getElementById('navSentinel');
+  const burger      = document.getElementById('fnavBurger');
+  const mobileNav   = document.getElementById('mobile-nav');
   const mobileNavClose = document.getElementById('mobile-nav-close');
+
+  /* Floating nav — compact once scrolled past the 80px sentinel */
+  if (fnavBar && navSentinel) {
+    const navObserver = new IntersectionObserver(
+      ([e]) => fnavBar.classList.toggle('compact', !e.isIntersecting),
+      { threshold: 0 });
+    navObserver.observe(navSentinel);
+  }
+  /* Cart badge pulse — call window.pulseCartBadge(n) when cart count changes */
+  function pulseCartBadge(newCount) {
+    const badge = document.getElementById('cartCount');
+    if (!badge) return;
+    badge.textContent = newCount;
+    badge.classList.remove('pulse');
+    requestAnimationFrame(() => badge.classList.add('pulse'));
+  }
+  window.pulseCartBadge = pulseCartBadge;
 
   /* ── PHASE 4 · GOLD DUST PARTICLES ── */
   function initParticles() {
@@ -2486,7 +3331,7 @@
     if (!audioEl || !title) return;
     let ctx, analyser, src, data;
     audioEl.addEventListener('play', () => {
-      if (ctx) return;
+      if (ctx || REDUCED_MOTION) return; // reduced-motion: audio plays, title won't pulse
       try {
         ctx = new (window.AudioContext || window.webkitAudioContext)();
         src = ctx.createMediaElementSource(audioEl);
@@ -2547,6 +3392,110 @@
 })();
 </script>
 
+<!-- Madinah ambient audio -->
+<audio id="madinah-audio" src="assets/madinah-ambient.mp3" loop preload="none"></audio>
+<button id="ambient-toggle" aria-label="تشغيل صوت المدينة" title="صوت المدينة">
+  <svg id="ambient-icon-on" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+  </svg>
+  <svg id="ambient-icon-off" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+    <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+    <line x1="2" y1="2" x2="22" y2="22"/>
+  </svg>
+</button>
+
+<style>
+  #ambient-toggle {
+    position: fixed;
+    bottom: 28px;
+    left: 28px;
+    z-index: 200;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,106,.25);
+    background: rgba(14,43,34,.55);
+    backdrop-filter: blur(10px);
+    color: rgba(201,168,106,.55);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color .3s, border-color .3s, opacity .3s;
+    opacity: .45;
+    padding: 0;
+  }
+  #ambient-toggle:hover { opacity: 1; color: var(--gold); border-color: rgba(201,168,106,.55); }
+  #ambient-toggle svg { width: 16px; height: 16px; }
+  #ambient-toggle.playing { color: var(--gold); opacity: .7; }
+</style>
+
+<script>
+(function () {
+  const audio   = document.getElementById('madinah-audio');
+  const btn     = document.getElementById('ambient-toggle');
+  const iconOn  = document.getElementById('ambient-icon-on');
+  const iconOff = document.getElementById('ambient-icon-off');
+  let playing   = false;
+
+  audio.volume = 0.055;
+
+  function fadeIn() {
+    audio.volume = 0;
+    audio.play().catch(() => {});
+    let v = 0;
+    const t = setInterval(() => {
+      v = Math.min(v + 0.005, 0.055);
+      audio.volume = v;
+      if (v >= 0.055) clearInterval(t);
+    }, 80);
+  }
+
+  function fadeOut(cb) {
+    let v = audio.volume;
+    const t = setInterval(() => {
+      v = Math.max(v - 0.005, 0);
+      audio.volume = v;
+      if (v <= 0) { clearInterval(t); audio.pause(); if (cb) cb(); }
+    }, 80);
+  }
+
+  function toggle() {
+    if (!playing) {
+      fadeIn();
+      playing = true;
+      btn.classList.add('playing');
+      iconOn.style.display  = 'block';
+      iconOff.style.display = 'none';
+      btn.setAttribute('aria-label', 'إيقاف صوت المدينة');
+    } else {
+      fadeOut();
+      playing = false;
+      btn.classList.remove('playing');
+      iconOn.style.display  = 'none';
+      iconOff.style.display = 'block';
+      btn.setAttribute('aria-label', 'تشغيل صوت المدينة');
+    }
+  }
+
+  btn.addEventListener('click', toggle);
+
+  // Auto-start on first scroll (browsers allow audio after any interaction)
+  let autoStarted = false;
+  window.addEventListener('scroll', function onScroll() {
+    if (!autoStarted) {
+      autoStarted = true;
+      window.removeEventListener('scroll', onScroll);
+      fadeIn();
+      playing = true;
+      btn.classList.add('playing');
+      iconOn.style.display  = 'block';
+      iconOff.style.display = 'none';
+      btn.setAttribute('aria-label', 'إيقاف صوت المدينة');
+    }
+  }, { passive: true });
+})();
+</script>
 
 </body>
 </html>
